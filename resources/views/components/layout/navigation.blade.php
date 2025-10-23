@@ -30,6 +30,11 @@
                     </a>
                 </div>
                 <div class="relative group">
+                    <a href="{{ route('blog.index') }}" class="text-secondary hover:text-primary transition-colors duration-200">
+                        Blog
+                    </a>
+                </div>
+                <div class="relative group">
                     <a href="#resources" class="text-secondary hover:text-primary transition-colors duration-200 flex items-center">
                         Resources
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,6 +78,7 @@
                 <a href="#about" class="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200">About</a>
                 <a href="#services" class="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200">Services</a>
                 <a href="{{ route('properties.index') }}" class="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200">Properties</a>
+                <a href="{{ route('blog.index') }}" class="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200">Blog</a>
                 <a href="#contact" class="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200">Contact</a>
                 <div class="pt-4">
                     <a href="tel:+1234567890" class="block px-3 py-2 text-primary font-medium">

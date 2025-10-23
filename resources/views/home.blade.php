@@ -10,7 +10,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <!-- Left Content -->
                 <div class="space-y-8">
-                    <h1 class="search-property-heading text-4xl md:text-5xl lg:text-6xl">
+                    <h1 class="search-property-heading text-4xl md:text-5xl lg:text-6xl hero-text-content">
                         Complete property solutions for 
                         <span class="relative">
                             buying, selling & leasing
@@ -18,7 +18,7 @@
                         </span>
                     </h1>
                     
-                    <div class="space-y-6 text-lg search-property-text">
+                    <div class="space-y-6 text-lg search-property-text hero-text-content">
                         <p>
                             We're a comprehensive real estate agency specializing in buying, selling, and leasing services across Australia. Whether you're looking to purchase your dream home, sell for maximum value, or lease your property, we provide expert guidance and personalized solutions that align with your financial goals.
                         </p>
@@ -27,7 +27,7 @@
                         </p>
                     </div>
                     
-                    <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="flex flex-col sm:flex-row gap-4 hero-text-content">
                         <a href="#contact" class="search-property-button flex items-center justify-center">
                             book a FREE discovery call
                             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -37,7 +37,7 @@
                     </div>
                     
                     <!-- Google Reviews -->
-                    <div class="flex items-center space-x-4 pt-6">
+                    <div class="flex items-center space-x-4 pt-6 hero-text-content">
                         <img src="https://via.placeholder.com/80x30/4285F4/FFFFFF?text=Google" alt="Google" class="h-8">
                         <div class="flex items-center space-x-2">
                             <div class="flex">
@@ -51,37 +51,51 @@
                             <span class="text-secondary">327 reviews</span>
                         </div>
                     </div>
+
+                    <!-- Blog Preview -->
+                    @if($blogPosts->count() > 0)
+                    <div class="bg-gradient-to-r from-accent to-accent-dark rounded-xl p-6 text-white hero-text-content">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            <span class="font-semibold text-lg">Latest Insight</span>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 line-clamp-2">
+                            <a href="{{ route('blog.show', $blogPosts->first()->slug) }}" class="hover:text-yellow-200 transition-colors">
+                                {{ $blogPosts->first()->title }}
+                            </a>
+                        </h4>
+                        <p class="text-sm opacity-90 mb-3">{{ Str::limit($blogPosts->first()->excerpt, 100) }}</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm opacity-75">{{ $blogPosts->first()->reading_time }} min read</span>
+                            <a href="{{ route('blog.index') }}" class="text-sm font-semibold hover:text-yellow-200 transition-colors">
+                                Read More →
+                            </a>
+                        </div>
+                    </div>
+                    @endif
                     
 
                 </div>
                 
                 <!-- Right Content - Property Examples -->
                 <div class="relative">
-                    <div class="grid grid-cols-2 gap-4">
-                        <!-- Property 1 -->
-                        <div class="relative bg-white rounded-xl shadow-lg overflow-hidden transform rotate-2 hover:rotate-0 transition-transform duration-300">
+                    <div class="grid grid-cols-2 gap-4 property-cards-container">
+                        <!-- Top Row - Left side images moved to top -->
+                        <!-- Property 1 (Top-Left) -->
+                        <div class="relative bg-white rounded-xl shadow-lg overflow-hidden transform rotate-2 hover:rotate-0 transition-transform duration-300 hero-property-card">
                             <img src="{{ asset('images/properties/ecoprops-slide-1.jpg') }}" alt="Buying Service Success" class="w-full h-48 object-cover">
                             <div class="absolute inset-0 flex items-center justify-center">
-                       
+                        
                             </div>
                             <div class="absolute bottom-4 left-4">
                                 <div class="text-accent font-bold text-lg">+20.99% capital growth</div>
                             </div>
                         </div>
                         
-                        <!-- Property 2 -->
-                        <div class="relative bg-white rounded-xl shadow-lg overflow-hidden transform -rotate-1 hover:rotate-0 transition-transform duration-300">
-                            <img src="{{ asset('images/properties/homelands-c3.webp') }}" alt="Selling Service Success" class="w-full h-48 object-cover">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                            
-                            </div>
-                            <div class="absolute bottom-4 left-4">
-                                <div class="text-accent font-bold text-lg">+7.11% yield on purchase price</div>
-                            </div>
-                        </div>
-                        
-                        <!-- Property 3 -->
-                        <div class="relative bg-white rounded-xl shadow-lg overflow-hidden transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                        <!-- Property 3 (Top-Right) -->
+                        <div class="relative bg-white rounded-xl shadow-lg overflow-hidden transform rotate-1 hover:rotate-0 transition-transform duration-300 hero-property-card">
                             <img src="{{ asset('images/properties/kelsey-collage.jpg') }}" alt="Leasing Service Success" class="w-full h-48 object-cover">
                             <div class="absolute inset-0 flex items-center justify-center">
                            
@@ -91,8 +105,20 @@
                             </div>
                         </div>
                         
-                        <!-- Property 4 -->
-                        <div class="relative bg-white rounded-xl shadow-lg overflow-hidden transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+                        <!-- Bottom Row - Right side images moved to bottom -->
+                        <!-- Property 2 (Bottom-Left) -->
+                        <div class="relative bg-white rounded-xl shadow-lg overflow-hidden transform -rotate-1 hover:rotate-0 transition-transform duration-300 hero-property-card">
+                            <img src="{{ asset('images/properties/homelands-c3.webp') }}" alt="Selling Service Success" class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                             
+                            </div>
+                            <div class="absolute bottom-4 left-4">
+                                <div class="text-accent font-bold text-lg">+7.11% yield on purchase price</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Property 4 (Bottom-Right) -->
+                        <div class="relative bg-white rounded-xl shadow-lg overflow-hidden transform -rotate-2 hover:rotate-0 transition-transform duration-300 hero-property-card">
                             <img src="{{ asset('images/properties/homelandsskyline-bayfonte.jpg') }}" alt="Property Management Success" class="w-full h-48 object-cover">
                             <div class="absolute inset-0 flex items-center justify-center">
                 
@@ -112,15 +138,28 @@
         <x-sections.founder />
 
         <!-- Services Section -->
-        <x-sections.services />
+        <div class="scroll-animate-scale">
+            <x-sections.services />
+        </div>
         <!-- Selling Properties Section -->
-        <x-sections.selling-properties :sellingProperties="$sellingProperties" />
+        <div class="scroll-animate-right">
+            <x-sections.selling-properties :sellingProperties="$sellingProperties" />
+        </div>
 
-        <!-- How It Works Section -->
+    <!-- How It Works Section -->
+    <div class="scroll-animate">
         <x-sections.how-it-works />
+    </div>
 
         <!-- Why Choose Us Section -->
-        <x-sections.why-choose-us />
+        <div class="scroll-animate-left">
+            <x-sections.why-choose-us />
+        </div>
+
+        <!-- Blog Section -->
+        <div class="scroll-animate-scale">
+            <x-sections.blog-section :blogPosts="$blogPosts" />
+        </div>
 
         <!-- Floating Contact Elements -->
     <div class="fixed bottom-4 left-4 z-50">

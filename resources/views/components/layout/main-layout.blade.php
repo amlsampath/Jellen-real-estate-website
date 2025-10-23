@@ -49,6 +49,7 @@
     <x-layout.footer />
 
     <!-- Scripts -->
+    <script src="{{ asset('js/scroll-animations.js') }}"></script>
     @yield('scripts')
 
     <!-- Analytics -->

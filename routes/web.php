@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SellingPropertiesController;
+use App\Http\Controllers\BlogController;
 
 // Home page
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -18,3 +19,8 @@ Route::get('/selling-properties', [SellingPropertiesController::class, 'index'])
 
 // Contact
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+// Blog
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/blog/category/{category}', [BlogController::class, 'category'])->name('blog.category');

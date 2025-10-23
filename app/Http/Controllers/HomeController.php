@@ -9,6 +9,7 @@ use App\Models\TeamMember;
 use App\Models\Statistic;
 use App\Models\Award;
 use App\Models\Service;
+use App\Models\BlogPost;
 
 class HomeController extends Controller
 {
@@ -35,6 +36,11 @@ class HomeController extends Controller
 
         // Get testimonials
         $testimonials = Testimonial::featured()->take(3)->get();
+
+        // Get recent blog posts
+        $blogPosts = BlogPost::published()
+            ->recent(3)
+            ->get();
 
         // Get selling properties data
         $sellingProperties = [
@@ -83,7 +89,8 @@ class HomeController extends Controller
             'awards',
             'teamMembers',
             'testimonials',
-            'sellingProperties'
+            'sellingProperties',
+            'blogPosts'
         ));
     }
 }
