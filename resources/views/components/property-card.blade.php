@@ -7,7 +7,7 @@
         
         <!-- Search Property Logo Overlay -->
         <div class="property-logo-overlay">
-            <span class="property-logo">Search Property</span>
+            <span class="property-logo">Govener Realty</span>
         </div>
         
         <!-- Location Overlay -->

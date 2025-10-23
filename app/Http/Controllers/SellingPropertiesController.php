@@ -12,7 +12,7 @@ class SellingPropertiesController extends Controller
             [
                 'id' => 1,
                 'title' => 'Modern Family Home',
-                'image' => 'property-1.jpg',
+                'image' => 'ecoprops-slide-1.jpg',
                 'location' => 'Western Australia',
                 'capital_growth' => '29.75',
                 'purchased_price' => '$447,000',
@@ -24,7 +24,7 @@ class SellingPropertiesController extends Controller
             [
                 'id' => 2,
                 'title' => 'Contemporary Investment Property',
-                'image' => 'property-2.jpg',
+                'image' => 'kelsey-collage.jpg',
                 'location' => 'Western Australia',
                 'capital_growth' => '33.65',
                 'purchased_price' => '$520,000',
@@ -36,7 +36,7 @@ class SellingPropertiesController extends Controller
             [
                 'id' => 3,
                 'title' => 'Premium Investment Property',
-                'image' => 'property-3.jpg',
+                'image' => 'kelsey-collage.jpg',
                 'location' => 'Western Australia',
                 'capital_growth' => '37.78',
                 'purchased_price' => '$450,000',

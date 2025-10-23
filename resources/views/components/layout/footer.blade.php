@@ -8,7 +8,7 @@
                         <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
                             <span class="text-white font-bold text-lg">S</span>
                         </div>
-                        <span class="text-xl font-bold text-primary search-property-heading">SearchProperty</span>
+                        <span class="text-xl font-bold text-primary search-property-heading">Govener Realty</span>
                     </div>
                     <p class="search-property-text ">
                         We're a buyer's agency that specialises in securing high-yielding investment properties with strong capital growth potential across Australia.
@@ -70,7 +70,7 @@
         <div class="border-t border-gray-200 py-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <p class="text-secondary text-sm">
-                    © {{ date('Y') }} SearchProperty. All rights reserved.
+                    © {{ date('Y') }} Govener Realty. All rights reserved.
                 </p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
                     <a href="#" class="text-secondary hover:text-accent transition-colors duration-200 text-sm">Privacy Policy</a>

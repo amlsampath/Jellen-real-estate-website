@@ -8,25 +8,25 @@
                     <h2 class="text-lg font-medium text-gray-600 mb-4">Our founder</h2>
                 </div>
                 
-                <h3 class="founder-name">Ravi Sharma</h3>
+                <h3 class="founder-name">Jellen Govender</h3>
                 
                 <div class="founder-bio">
                     <p class="mb-4">
-                        Ravi Sharma is the founder of <strong>Search Property Buyer's Agency</strong>, one of the fastest growing buyers' agencies in Australia. Search Property has been named as a finalist in the <strong>REB Awards</strong> as the <strong>Best Buyer's Agency in Australia in 2023 & 2024</strong>.
+                        Jellen Govender is the founder of <strong>Govener Realty</strong>, a comprehensive real estate agency specializing in buying, selling, and leasing services across Australia. Govener Realty has been recognized as a finalist in the <strong>REB Awards</strong> for <strong>Best Real Estate Agency in Australia 2023 & 2024</strong>.
                     </p>
                     
                     <p class="mb-4">
-                        Ravi hosts <strong>Australia's #1 property YouTube channel</strong>, Personal Finance with Ravi Sharma (<strong>100k+ subscribers</strong>).
+                        Jellen hosts <strong>Australia's #1 property YouTube channel</strong>, Personal Finance with Jellen Govender, with over <strong>100k subscribers</strong> sharing expert property insights.
                     </p>
                     
                     <p>
-                        By the age of 32, Ravi successfully acquired a property portfolio of over <strong>$15m</strong>, showcasing his expertise and commitment to property investment. His comprehensive knowledge and practical experience make him a trusted representative in helping others achieve financial freedom through real estate.
+                        With a successful <strong>$15m property portfolio</strong> built by age 32, Jellen brings real-world experience to help clients with all their property needs - whether buying their first home, selling for maximum value, or managing rental properties.
                     </p>
                 </div>
                 
                 <div class="founder-buttons">
                     <a href="#about" class="founder-button-primary">
-                        Learn more about Ravi
+                        Learn more about Jellen
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
@@ -43,7 +43,7 @@
             
             <!-- Right Content - Image -->
             <div class="founder-image-container lg:col-span-1">
-                <img src="{{ asset('images/team/ravi-sharma.jpg') }}" alt="Ravi Sharma - Founder of Search Property" class="founder-image">
+                <img src="{{ asset('images/team/jellen-govender.jpg') }}" alt="Jellen Govender - Founder of Govener Realty" class="founder-image">
             </div>
         </div>
     </div>

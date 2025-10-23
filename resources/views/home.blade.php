@@ -1,7 +1,7 @@
 @extends('components.layout.main-layout')
 
-@section('title', 'SearchProperty - Retire Earlier Through Property Investment')
-@section('description', 'We\'re a buyer\'s agency that specialises in securing high-yielding investment properties with strong capital growth potential across Australia.')
+@section('title', 'Govener Realty - Complete Property Solutions')
+@section('description', 'We\'re a comprehensive real estate agency specializing in buying, selling, and leasing services across Australia.')
 
 @section('content')
     <!-- Hero Section -->
@@ -11,19 +11,19 @@
                 <!-- Left Content -->
                 <div class="space-y-8">
                     <h1 class="search-property-heading text-4xl md:text-5xl lg:text-6xl">
-                        Retire earlier through 
+                        Complete property solutions for 
                         <span class="relative">
-                            property
+                            buying, selling & leasing
                             <div class="absolute bottom-2 left-0 right-0 h-1 bg-accent"></div>
                         </span>
                     </h1>
                     
                     <div class="space-y-6 text-lg search-property-text">
                         <p>
-                            We're a buyer's agency that specialises in securing high-yielding investment properties with strong capital growth potential across Australia. This makes us your go-to buyer's agent in Australia for purchasing an investment property that aligns with your individual financial goals.
+                            We're a comprehensive real estate agency specializing in buying, selling, and leasing services across Australia. Whether you're looking to purchase your dream home, sell for maximum value, or lease your property, we provide expert guidance and personalized solutions that align with your financial goals.
                         </p>
                         <p>
-                            Book a FREE discovery call to learn more about how we can assist you in buying an investment property.
+                            Book a FREE discovery call to learn more about how we can assist you with your property needs - from buying and selling to leasing solutions.
                         </p>
                     </div>
                     
@@ -52,16 +52,7 @@
                         </div>
                     </div>
                     
-                    <!-- Founder Profile Card -->
-                    <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                        <div class="flex items-center space-x-4">
-                            <img src="{{ asset('images/team/sarah-johnson.jpg') }}" alt="Ravi Sharma" class="w-16 h-16 rounded-full object-cover">
-                            <div>
-                                <h3 class="font-bold text-primary">Ravi Sharma</h3>
-                                <p class="text-sm text-secondary">Founder of Search Property buyer's agency and the host of YouTube channel Personal Finance with Ravi Sharma.</p>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
                 
                 <!-- Right Content - Property Examples -->
@@ -69,11 +60,9 @@
                     <div class="grid grid-cols-2 gap-4">
                         <!-- Property 1 -->
                         <div class="relative bg-white rounded-xl shadow-lg overflow-hidden transform rotate-2 hover:rotate-0 transition-transform duration-300">
-                            <img src="{{ asset('images/properties/property-1.jpg') }}" alt="Client Deal" class="w-full h-48 object-cover">
-                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                <div class="text-center text-white">
-                                    <div class="text-sm font-medium opacity-75">CLIENT DEAL SECURED</div>
-                                </div>
+                            <img src="{{ asset('images/properties/ecoprops-slide-1.jpg') }}" alt="Buying Service Success" class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                       
                             </div>
                             <div class="absolute bottom-4 left-4">
                                 <div class="text-accent font-bold text-lg">+20.99% capital growth</div>
@@ -82,12 +71,9 @@
                         
                         <!-- Property 2 -->
                         <div class="relative bg-white rounded-xl shadow-lg overflow-hidden transform -rotate-1 hover:rotate-0 transition-transform duration-300">
-                            <img src="{{ asset('images/properties/property-2.jpg') }}" alt="Client Deal" class="w-full h-48 object-cover">
-                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                <div class="text-center text-white">
-                                    <div class="text-sm font-medium opacity-75">within 21 months</div>
-                                    <div class="text-sm font-medium opacity-75 mt-1">CLIENT DEAL SECURED</div>
-                                </div>
+                            <img src="{{ asset('images/properties/homelands-c3.webp') }}" alt="Selling Service Success" class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                            
                             </div>
                             <div class="absolute bottom-4 left-4">
                                 <div class="text-accent font-bold text-lg">+7.11% yield on purchase price</div>
@@ -96,12 +82,9 @@
                         
                         <!-- Property 3 -->
                         <div class="relative bg-white rounded-xl shadow-lg overflow-hidden transform rotate-1 hover:rotate-0 transition-transform duration-300">
-                            <img src="{{ asset('images/properties/property-3.jpg') }}" alt="Client Deal" class="w-full h-48 object-cover">
-                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                <div class="text-center text-white">
-                                    <div class="text-sm font-medium opacity-75">within 20 months</div>
-                                    <div class="text-sm font-medium opacity-75 mt-1">CLIENT DEAL SECURED</div>
-                                </div>
+                            <img src="{{ asset('images/properties/kelsey-collage.jpg') }}" alt="Leasing Service Success" class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                           
                             </div>
                             <div class="absolute bottom-4 left-4">
                                 <div class="text-accent font-bold text-lg">7.45% yield on purchase price</div>
@@ -110,12 +93,9 @@
                         
                         <!-- Property 4 -->
                         <div class="relative bg-white rounded-xl shadow-lg overflow-hidden transform -rotate-2 hover:rotate-0 transition-transform duration-300">
-                            <img src="{{ asset('images/properties/property-4.jpg') }}" alt="Client Deal" class="w-full h-48 object-cover">
-                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                <div class="text-center text-white">
-                                    <div class="text-sm font-medium opacity-75">within 24 months</div>
-                                    <div class="text-sm font-medium opacity-75 mt-1">CLIENT DEAL SECURED</div>
-                                </div>
+                            <img src="{{ asset('images/properties/homelandsskyline-bayfonte.jpg') }}" alt="Property Management Success" class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                
                             </div>
                             <div class="absolute bottom-4 left-4">
                                 <div class="text-accent font-bold text-lg">+15.2% capital growth</div>
