@@ -52,6 +52,20 @@
         <div class="bg-white rounded-lg shadow p-6">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
+                    <div class="w-8 h-8 bg-indigo-500 rounded-md flex items-center justify-center">
+                        <i class="fas fa-comments text-white text-sm"></i>
+                    </div>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-gray-500">Total Inquiries</p>
+                    <p class="text-2xl font-semibold text-gray-900">{{ \App\Models\PropertyInquiry::count() }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
                     <div class="w-8 h-8 bg-purple-500 rounded-md flex items-center justify-center">
                         <i class="fas fa-images text-white text-sm"></i>
                     </div>
@@ -202,6 +216,18 @@
                     <div class="ml-4">
                         <p class="text-sm font-medium text-gray-900">Manage Blog Posts</p>
                         <p class="text-sm text-gray-500">View and edit blog posts</p>
+                    </div>
+                </a>
+                
+                <a href="{{ route('admin.inquiries.index') }}" class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                    <div class="flex-shrink-0">
+                        <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-envelope text-yellow-600"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-900">Manage Inquiries</p>
+                        <p class="text-sm text-gray-500">View and manage property inquiries</p>
                     </div>
                 </a>
             </div>

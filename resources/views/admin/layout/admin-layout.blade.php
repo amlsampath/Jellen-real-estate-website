@@ -58,14 +58,8 @@
                         <span>Blog Posts</span>
                     </a>
                     
-                    <a href="#" 
-                       class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200">
-                        <i class="fas fa-images w-5"></i>
-                        <span>Media Library</span>
-                    </a>
-                    
-                    <a href="#" 
-                       class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200">
+                    <a href="{{ route('admin.inquiries.index') }}" 
+                       class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200 {{ request()->routeIs('admin.inquiries.*') ? 'bg-primary text-white' : '' }}">
                         <i class="fas fa-envelope w-5"></i>
                         <span>Inquiries</span>
                     </a>
