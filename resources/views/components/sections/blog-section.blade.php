@@ -10,7 +10,7 @@
         <!-- Enhanced Section Header -->
         <div class="text-center mb-20">
             <div class="inline-block mb-8">
-                <span class="bg-gradient-to-r from-accent to-accent-dark text-white px-8 py-4 rounded-full text-sm font-bold tracking-wide uppercase shadow-lg">
+                <span class="inline-flex items-center px-8 py-4 bg-accent text-white font-semibold rounded-lg hover:bg-accent-dark transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                     📚 Knowledge Hub
                 </span>
             </div>
@@ -70,12 +70,12 @@
                         </div>
                     @endif
                     <div class="absolute top-4 left-4">
-                        <span class="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg hover:from-emerald-600 hover:to-emerald-700 transition-all duration-300 transform hover:scale-105">
+                        <span class="bg-accent text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg hover:bg-accent-dark transition-all duration-300 transform hover:scale-105">
                             {{ $post->category }}
                         </span>
                     </div>
                     <div class="absolute top-4 right-4">
-                        <button class="bg-white bg-opacity-95 backdrop-blur-sm text-gray-600 p-3 rounded-full hover:bg-red-500 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-110 group">
+                        <button class="bg-white bg-opacity-95 backdrop-blur-sm text-gray-600 p-3 rounded-lg hover:bg-red-500 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 group">
                             <svg class="w-4 h-4 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                             </svg>
@@ -98,7 +98,7 @@
                     <p class="text-gray-600 mb-6 leading-relaxed">{{ Str::limit($post->excerpt, 120) }}</p>
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 bg-gradient-to-br from-accent to-accent-dark rounded-full flex items-center justify-center shadow-md">
+                            <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center shadow-md">
                                 <span class="text-white text-sm font-bold">{{ substr($post->author, 0, 1) }}</span>
                             </div>
                             <div>
@@ -107,7 +107,7 @@
                             </div>
                         </div>
                         <a href="{{ route('blog.show', $post->slug) }}" 
-                           class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-semibold text-sm shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 relative overflow-hidden group">
+                           class="bg-accent text-white px-6 py-3 rounded-lg hover:bg-accent-dark transition-all duration-300 font-semibold text-sm shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 relative overflow-hidden group">
                             <span class="relative z-10 flex items-center">
                                 Read More
                                 <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

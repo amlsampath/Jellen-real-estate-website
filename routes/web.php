@@ -18,6 +18,9 @@ Route::get('/properties/{property}', [PropertyController::class, 'show'])->name(
 Route::get('/selling-properties', [SellingPropertiesController::class, 'index'])->name('selling-properties.index');
 
 // Contact
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 // Blog

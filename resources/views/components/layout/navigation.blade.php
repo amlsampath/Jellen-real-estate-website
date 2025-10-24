@@ -42,6 +42,11 @@
                         </svg>
                     </a>
                 </div>
+                <div class="relative group">
+                    <a href="{{ route('contact') }}" class="text-secondary hover:text-primary transition-colors duration-200">
+                        Contact
+                    </a>
+                </div>
             </div>
 
             <!-- Contact Info & CTA -->
@@ -52,8 +57,8 @@
                     </svg>
                     1300 782 492
                 </a>
-                <a href="#contact" class="search-property-button flex items-center">
-                    Book a call
+                <a href="{{ route('contact') }}" class="search-property-button flex items-center">
+                    Contact Us
                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                     </svg>
@@ -79,13 +84,13 @@
                 <a href="#services" class="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200">Services</a>
                 <a href="{{ route('properties.index') }}" class="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200">Properties</a>
                 <a href="{{ route('blog.index') }}" class="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200">Blog</a>
-                <a href="#contact" class="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200">Contact</a>
+                <a href="{{ route('contact') }}" class="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200">Contact</a>
                 <div class="pt-4">
                     <a href="tel:+1234567890" class="block px-3 py-2 text-primary font-medium">
                         📞 (123) 456-7890
                     </a>
-                    <a href="#contact" class="block mx-3 mt-2 btn-primary text-center">
-                        Get Started
+                    <a href="{{ route('contact') }}" class="block mx-3 mt-2 btn-primary text-center">
+                        Contact Us
                     </a>
                 </div>
             </div>
