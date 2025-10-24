@@ -52,8 +52,8 @@
                         <span>Properties</span>
                     </a>
                     
-                    <a href="#" 
-                       class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200">
+                    <a href="{{ route('admin.blog-posts.index') }}" 
+                       class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200 {{ request()->routeIs('admin.blog-posts.*') ? 'bg-primary text-white' : '' }}">
                         <i class="fas fa-blog w-5"></i>
                         <span>Blog Posts</span>
                     </a>

@@ -45,10 +45,25 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('properties', App\Http\Controllers\Admin\PropertyController::class);
         Route::get('properties/{property}/view', [App\Http\Controllers\Admin\PropertyController::class, 'view'])->name('properties.view');
         
+        // Blog post management routes (temporarily without middleware for testing)
+        Route::resource('blog-posts', App\Http\Controllers\Admin\BlogPostController::class);
+        Route::get('blog-posts/{blogPost}/view', [App\Http\Controllers\Admin\BlogPostController::class, 'view'])->name('blog-posts.view');
+        
         // Debug route for file upload testing
         Route::get('debug-upload', function() {
             return view('admin.debug-upload');
         })->name('debug.upload');
+        
+        // Debug route for blog post testing
+        Route::post('debug-blog', function(\Illuminate\Http\Request $request) {
+            \Log::info('Debug blog post submission', [
+                'request_data' => $request->all(),
+                'has_files' => $request->hasFile('featured_image'),
+                'method' => $request->method(),
+                'url' => $request->url()
+            ]);
+            return response()->json(['success' => true, 'message' => 'Debug route reached']);
+        })->name('debug.blog');
         
         Route::post('debug-upload', function(\Illuminate\Http\Request $request) {
             \Log::info('Debug upload test:', [

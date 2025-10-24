@@ -156,7 +156,7 @@
             <h3 class="text-lg font-medium text-gray-900">Quick Actions</h3>
         </div>
         <div class="p-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <a href="{{ route('admin.properties.create') }}" class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200">
                     <div class="flex-shrink-0">
                         <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -181,15 +181,27 @@
                     </div>
                 </a>
                 
-                <a href="#" class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                <a href="{{ route('admin.blog-posts.create') }}" class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200">
                     <div class="flex-shrink-0">
                         <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-upload text-purple-600"></i>
+                            <i class="fas fa-plus text-purple-600"></i>
                         </div>
                     </div>
                     <div class="ml-4">
-                        <p class="text-sm font-medium text-gray-900">Upload Media</p>
-                        <p class="text-sm text-gray-500">Add images and files</p>
+                        <p class="text-sm font-medium text-gray-900">Add Blog Post</p>
+                        <p class="text-sm text-gray-500">Create a new blog post</p>
+                    </div>
+                </a>
+                
+                <a href="{{ route('admin.blog-posts.index') }}" class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                    <div class="flex-shrink-0">
+                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-blog text-orange-600"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-900">Manage Blog Posts</p>
+                        <p class="text-sm text-gray-500">View and edit blog posts</p>
                     </div>
                 </a>
             </div>

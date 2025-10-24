@@ -17,6 +17,7 @@ class BlogPost extends Model
         'tags',
         'category',
         'is_published',
+        'status',
         'views',
         'reading_time',
         'meta_title',
@@ -27,6 +28,7 @@ class BlogPost extends Model
     protected $casts = [
         'tags' => 'array',
         'is_published' => 'boolean',
+        'status' => 'string',
         'views' => 'integer',
         'reading_time' => 'integer'
     ];
@@ -66,5 +68,21 @@ class BlogPost extends Model
     public function admin()
     {
         return $this->belongsTo(Admin::class, 'created_by');
+    }
+    
+    // Get the correct image URL (handles both old and new paths)
+    public function getFeaturedImageUrlAttribute()
+    {
+        if (!$this->featured_image) {
+            return null;
+        }
+        
+        // Check if it's a new uploaded image (stored in public directory)
+        if (file_exists(public_path('images/blog/' . $this->featured_image))) {
+            return asset('images/blog/' . $this->featured_image);
+        }
+        
+        // If image doesn't exist, return a placeholder
+        return asset('images/placeholder-property.jpg');
     }
 }
