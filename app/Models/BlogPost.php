@@ -20,7 +20,8 @@ class BlogPost extends Model
         'views',
         'reading_time',
         'meta_title',
-        'meta_description'
+        'meta_description',
+        'created_by'
     ];
 
     protected $casts = [
@@ -59,5 +60,11 @@ class BlogPost extends Model
     public function scopeRecent($query, $limit = 3)
     {
         return $query->orderBy('created_at', 'desc')->limit($limit);
+    }
+
+    // Relationships
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'created_by');
     }
 }

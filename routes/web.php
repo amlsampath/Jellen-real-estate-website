@@ -27,3 +27,40 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/blog/category/{category}', [BlogController::class, 'category'])->name('blog.category');
+
+// Admin Routes
+Route::prefix('admin')->name('admin.')->group(function () {
+    // Authentication routes (no middleware)
+    Route::get('/login', [App\Http\Controllers\Admin\AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [App\Http\Controllers\Admin\AuthController::class, 'login']);
+    Route::post('/logout', [App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('logout');
+    
+    // Protected admin routes
+    Route::middleware('admin.auth')->group(function () {
+        Route::get('/dashboard', function () {
+            return view('admin.dashboard');
+        })->name('dashboard');
+        
+        // Property management routes
+        Route::resource('properties', App\Http\Controllers\Admin\PropertyController::class);
+        Route::get('properties/{property}/view', [App\Http\Controllers\Admin\PropertyController::class, 'view'])->name('properties.view');
+        
+        // Debug route for file upload testing
+        Route::get('debug-upload', function() {
+            return view('admin.debug-upload');
+        })->name('debug.upload');
+        
+        Route::post('debug-upload', function(\Illuminate\Http\Request $request) {
+            \Log::info('Debug upload test:', [
+                'has_files' => $request->hasFile('test_file'),
+                'file_valid' => $request->hasFile('test_file') ? $request->file('test_file')->isValid() : false,
+                'file_size' => $request->hasFile('test_file') ? $request->file('test_file')->getSize() : 0,
+                'file_name' => $request->hasFile('test_file') ? $request->file('test_file')->getClientOriginalName() : null,
+            ]);
+            return response()->json(['success' => true]);
+        })->name('debug.upload.test');
+        // Blog management routes will be added here
+        // Media library routes will be added here
+        // Inquiry management routes will be added here
+    });
+});

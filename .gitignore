@@ -22,3 +22,15 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Ignore uploaded images
+/public/images/properties/*
+!/public/images/properties/.gitkeep
+/public/images/blog/*
+!/public/images/blog/.gitkeep
+/public/images/team/*
+!/public/images/team/.gitkeep
+/public/images/awards/*
+!/public/images/awards/.gitkeep
+/public/images/testimonials/*
+!/public/images/testimonials/.gitkeep
