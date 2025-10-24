@@ -50,8 +50,8 @@
             @forelse($blogPosts as $post)
             <article class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 blog-card scroll-animate scroll-animate-delay-{{ $loop->iteration }}">
                 <div class="relative overflow-hidden">
-                    @if($post->featured_image)
-                        <img src="{{ asset('images/blog/' . $post->featured_image) }}" 
+                    @if($post->featured_image_url)
+                        <img src="{{ $post->featured_image_url }}" 
                              alt="{{ $post->title }}" 
                              class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
                     @else
@@ -86,9 +86,9 @@
                     <div class="flex items-center space-x-4 mb-4">
                         <span class="text-gray-500 text-sm font-medium">{{ $post->created_at->format('M d, Y') }}</span>
                         <span class="text-gray-300">•</span>
-                        <span class="text-gray-500 text-sm font-medium">{{ $post->reading_time }} min read</span>
+                        <span class="text-gray-500 text-sm font-medium">{{ $post->reading_time ?? 5 }} min read</span>
                         <span class="text-gray-300">•</span>
-                        <span class="text-gray-500 text-sm font-medium">{{ $post->views }} views</span>
+                        <span class="text-gray-500 text-sm font-medium">{{ $post->views ?? 0 }} views</span>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-accent transition-colors duration-300">
                         <a href="{{ route('blog.show', $post->slug) }}">
@@ -99,10 +99,10 @@
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
                             <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center shadow-md">
-                                <span class="text-white text-sm font-bold">{{ substr($post->author, 0, 1) }}</span>
+                                <span class="text-white text-sm font-bold">{{ substr($post->author ?? 'A', 0, 1) }}</span>
                             </div>
                             <div>
-                                <p class="font-semibold text-gray-900 text-sm">{{ $post->author }}</p>
+                                <p class="font-semibold text-gray-900 text-sm">{{ $post->author ?? 'Admin' }}</p>
                                 <p class="text-xs text-gray-500">Author</p>
                             </div>
                         </div>

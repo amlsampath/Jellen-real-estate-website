@@ -267,10 +267,10 @@ class DatabaseSeeder extends Seeder
         // Seed contact submissions
         ContactSubmission::factory(15)->create();
 
-        // Seed admin user
+        // Seed admin user and agent contact
         $this->call([
             AdminSeeder::class,
-            InquirySeeder::class,
+            AgentContactSeeder::class,
         ]);
     }
 }

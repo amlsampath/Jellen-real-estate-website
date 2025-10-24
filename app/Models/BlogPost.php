@@ -55,7 +55,7 @@ class BlogPost extends Model
     // Scope for published posts
     public function scopePublished($query)
     {
-        return $query->where('is_published', true);
+        return $query->where('status', 'published');
     }
 
     // Scope for recent posts

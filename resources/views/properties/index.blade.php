@@ -111,7 +111,7 @@
                             @endif
                         </div>
                         <div class="property-price mb-4">${{ number_format($property->price) }}</div>
-                        <a href="{{ route('properties.show', $property) }}" class="btn-primary w-full text-center">
+                        <a href="{{ route('properties.show', $property->slug) }}" class="btn-primary w-full text-center">
                             View Details
                         </a>
                     </div>

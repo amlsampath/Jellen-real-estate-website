@@ -49,11 +49,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('blog-posts', App\Http\Controllers\Admin\BlogPostController::class);
         Route::get('blog-posts/{blogPost}/view', [App\Http\Controllers\Admin\BlogPostController::class, 'view'])->name('blog-posts.view');
         
-        // Inquiry management routes
-        Route::resource('inquiries', App\Http\Controllers\Admin\InquiryController::class)->only(['index', 'show', 'update', 'destroy']);
-        Route::get('inquiries/{inquiry}/view', [App\Http\Controllers\Admin\InquiryController::class, 'view'])->name('inquiries.view');
-        Route::patch('inquiries/{inquiry}/mark-contacted', [App\Http\Controllers\Admin\InquiryController::class, 'markAsContacted'])->name('inquiries.mark-contacted');
-        Route::patch('inquiries/{inquiry}/mark-closed', [App\Http\Controllers\Admin\InquiryController::class, 'markAsClosed'])->name('inquiries.mark-closed');
+        
+        // Agent contact management routes
+        Route::get('agent-contact', [App\Http\Controllers\Admin\AgentContactController::class, 'index'])->name('agent-contact.index');
+        Route::get('agent-contact/edit', [App\Http\Controllers\Admin\AgentContactController::class, 'edit'])->name('agent-contact.edit');
+        Route::put('agent-contact', [App\Http\Controllers\Admin\AgentContactController::class, 'update'])->name('agent-contact.update');
         
         // Debug route for file upload testing
         Route::get('debug-upload', function() {
@@ -85,3 +85,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Inquiry management routes will be added here
     });
 });
+

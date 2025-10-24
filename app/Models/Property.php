@@ -80,10 +80,6 @@ class Property extends Model
         return $this->belongsTo(Admin::class, 'created_by');
     }
 
-    public function inquiries()
-    {
-        return $this->hasMany(PropertyInquiry::class);
-    }
 
     // Auto-generate slug from title
     protected static function boot()
@@ -92,9 +88,38 @@ class Property extends Model
         
         static::creating(function ($property) {
             if (empty($property->slug)) {
-                $property->slug = \Illuminate\Support\Str::slug($property->title);
+                $property->slug = static::generateUniqueSlug($property->title);
             }
         });
+        
+        static::updating(function ($property) {
+            if ($property->isDirty('title')) {
+                $property->slug = static::generateUniqueSlug($property->title, $property->id);
+            }
+        });
+    }
+    
+    // Use slug for route model binding
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+    
+    // Generate unique slug
+    public static function generateUniqueSlug($title, $excludeId = null)
+    {
+        $slug = \Illuminate\Support\Str::slug($title);
+        $originalSlug = $slug;
+        $counter = 1;
+        
+        while (static::where('slug', $slug)->when($excludeId, function($query) use ($excludeId) {
+            return $query->where('id', '!=', $excludeId);
+        })->exists()) {
+            $slug = $originalSlug . '-' . $counter;
+            $counter++;
+        }
+        
+        return $slug;
     }
 
     // Get the correct image URL (handles both old and new paths)

@@ -34,3 +34,5 @@ Thumbs.db
 !/public/images/awards/.gitkeep
 /public/images/testimonials/*
 !/public/images/testimonials/.gitkeep
+/public/images/agent/*
+!/public/images/agent/.gitkeep

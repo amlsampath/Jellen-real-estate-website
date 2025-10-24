@@ -148,36 +148,23 @@
 
             <!-- Sidebar -->
             <div class="lg:col-span-1">
-                <!-- Contact Form -->
-                <div class="bg-white rounded-xl shadow-md p-6 mb-8">
-                    <h3 class="text-xl font-bold text-primary mb-4">Interested in this property?</h3>
-                    <form action="{{ route('contact.store') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="property_interest" value="{{ $property->title }}">
-                        
-                        <div class="space-y-4">
-                            <x-ui.input name="name" label="Your Name" placeholder="Full name" required />
-                            <x-ui.input name="email" type="email" label="Email" placeholder="your@email.com" required />
-                            <x-ui.input name="phone" label="Phone" placeholder="(123) 456-7890" />
-                            <x-ui.input name="message" label="Message" placeholder="Tell us about your interest..." required />
-                            <button type="submit" class="btn-primary w-full">Send Inquiry</button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Property Agent -->
-                <div class="bg-white rounded-xl shadow-md p-6">
-                    <h3 class="text-xl font-bold text-primary mb-4">Property Agent</h3>
-                    <div class="text-center">
-                        <div class="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-4"></div>
-                        <h4 class="font-semibold text-primary">Sarah Johnson</h4>
-                        <p class="text-secondary text-sm mb-4">Senior Real Estate Advisor</p>
+                <!-- Agent Contact -->
+                @php
+                    $agent = \App\Models\AgentContact::active()->first();
+                @endphp
+                
+                @if($agent)
+                    <x-agent-contact :agent="$agent" />
+                @else
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h3 class="text-xl font-bold text-primary mb-4">Contact Us</h3>
+                        <p class="text-gray-600 mb-4">Get in touch with our team for more information about this property.</p>
                         <div class="space-y-2">
-                            <a href="tel:+1234567890" class="btn-primary w-full text-center text-sm">📞 Call Agent</a>
-                            <a href="mailto:sarah@realestate.com" class="btn-outline w-full text-center text-sm">✉️ Email Agent</a>
+                            <a href="tel:+61400123456" class="btn-primary w-full text-center">📞 Call Us</a>
+                            <a href="mailto:info@govenerrealty.com" class="btn-outline w-full text-center">✉️ Email Us</a>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>
@@ -205,7 +192,7 @@
                             @endif
                         </div>
                         <div class="property-price mb-4">${{ number_format($relatedProperty->price) }}</div>
-                        <a href="{{ route('properties.show', $relatedProperty) }}" class="btn-primary w-full text-center">
+                        <a href="{{ route('properties.show', $relatedProperty->slug) }}" class="btn-primary w-full text-center">
                             View Details
                         </a>
                     </div>

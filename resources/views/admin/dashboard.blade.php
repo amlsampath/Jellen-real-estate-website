@@ -35,33 +35,6 @@
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-6">
-            <div class="flex items-center">
-                <div class="flex-shrink-0">
-                    <div class="w-8 h-8 bg-yellow-500 rounded-md flex items-center justify-center">
-                        <i class="fas fa-envelope text-white text-sm"></i>
-                    </div>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm font-medium text-gray-500">New Inquiries</p>
-                    <p class="text-2xl font-semibold text-gray-900">{{ \App\Models\PropertyInquiry::where('status', 'new')->count() }}</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="bg-white rounded-lg shadow p-6">
-            <div class="flex items-center">
-                <div class="flex-shrink-0">
-                    <div class="w-8 h-8 bg-indigo-500 rounded-md flex items-center justify-center">
-                        <i class="fas fa-comments text-white text-sm"></i>
-                    </div>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm font-medium text-gray-500">Total Inquiries</p>
-                    <p class="text-2xl font-semibold text-gray-900">{{ \App\Models\PropertyInquiry::count() }}</p>
-                </div>
-            </div>
-        </div>
         
         <div class="bg-white rounded-lg shadow p-6">
             <div class="flex items-center">
@@ -124,44 +97,6 @@
             </div>
         </div>
         
-        <!-- Recent Inquiries -->
-        <div class="bg-white rounded-lg shadow">
-            <div class="px-6 py-4 border-b border-gray-200">
-                <h3 class="text-lg font-medium text-gray-900">Recent Inquiries</h3>
-            </div>
-            <div class="p-6">
-                @php
-                    $recentInquiries = \App\Models\PropertyInquiry::with('property')->latest()->limit(5)->get();
-                @endphp
-                
-                @if($recentInquiries->count() > 0)
-                    <div class="space-y-4">
-                        @foreach($recentInquiries as $inquiry)
-                            <div class="flex items-center space-x-4">
-                                <div class="flex-shrink-0">
-                                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                                        <i class="fas fa-user text-blue-600"></i>
-                                    </div>
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <p class="text-sm font-medium text-gray-900">{{ $inquiry->name }}</p>
-                                    <p class="text-sm text-gray-500">{{ $inquiry->property->title ?? 'Property not found' }}</p>
-                                </div>
-                                <div class="flex-shrink-0">
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
-                                        {{ $inquiry->status === 'new' ? 'bg-yellow-100 text-yellow-800' : 
-                                           ($inquiry->status === 'contacted' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800') }}">
-                                        {{ ucfirst($inquiry->status) }}
-                                    </span>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @else
-                    <p class="text-gray-500 text-center py-4">No inquiries found</p>
-                @endif
-            </div>
-        </div>
     </div>
     
     <!-- Quick Actions -->
@@ -219,17 +154,6 @@
                     </div>
                 </a>
                 
-                <a href="{{ route('admin.inquiries.index') }}" class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200">
-                    <div class="flex-shrink-0">
-                        <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-envelope text-yellow-600"></i>
-                        </div>
-                    </div>
-                    <div class="ml-4">
-                        <p class="text-sm font-medium text-gray-900">Manage Inquiries</p>
-                        <p class="text-sm text-gray-500">View and manage property inquiries</p>
-                    </div>
-                </a>
             </div>
         </div>
     </div>
