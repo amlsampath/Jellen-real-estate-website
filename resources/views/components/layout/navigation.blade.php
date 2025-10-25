@@ -30,6 +30,11 @@
                     </a>
                 </div>
                 <div class="relative group">
+                    <a href="{{ route('properties.index') }}" class="text-secondary hover:text-primary transition-colors duration-200">
+                        Properties
+                    </a>
+                </div>
+                <div class="relative group">
                     <a href="{{ route('blog.index') }}" class="text-secondary hover:text-primary transition-colors duration-200">
                         Blog
                     </a>

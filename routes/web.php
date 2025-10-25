@@ -12,7 +12,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Properties
 Route::get('/properties', [PropertyController::class, 'index'])->name('properties.index');
-Route::get('/properties/{property}', [PropertyController::class, 'show'])->name('properties.show');
+Route::get('/properties/{property:slug}', [PropertyController::class, 'show'])->name('properties.show');
 
 // Selling Properties
 Route::get('/selling-properties', [SellingPropertiesController::class, 'index'])->name('selling-properties.index');

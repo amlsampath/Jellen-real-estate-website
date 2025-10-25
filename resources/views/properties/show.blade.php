@@ -12,14 +12,20 @@
                 <!-- Property Images -->
                 <div class="lg:w-2/3">
                     <div class="aspect-video bg-gray-200 rounded-xl overflow-hidden mb-4">
-                        <img src="{{ asset('images/' . $property->featured_image) }}" alt="{{ $property->title }}" class="w-full h-full object-cover">
+                        @if($property->featured_image_url)
+                            <img src="{{ $property->featured_image_url }}" alt="{{ $property->title }}" class="w-full h-full object-cover">
+                        @else
+                            <div class="w-full h-full flex items-center justify-center bg-gray-200">
+                                <i class="fas fa-home text-gray-400 text-6xl"></i>
+                            </div>
+                        @endif
                     </div>
                     
-                    @if($property->gallery_images && count($property->gallery_images) > 0)
+                    @if($property->gallery_image_urls && count($property->gallery_image_urls) > 0)
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        @foreach($property->gallery_images as $image)
+                        @foreach($property->gallery_image_urls as $imageUrl)
                         <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden">
-                            <img src="{{ asset('images/' . $image) }}" alt="{{ $property->title }}" class="w-full h-full object-cover">
+                            <img src="{{ $imageUrl }}" alt="{{ $property->title }}" class="w-full h-full object-cover">
                         </div>
                         @endforeach
                     </div>
@@ -92,58 +98,122 @@
                     </div>
                 </div>
 
-                <!-- Property Features -->
-                <div class="bg-white rounded-xl shadow-md p-8">
-                    <h2 class="text-2xl font-bold text-primary mb-6">Property Features</h2>
+                <!-- Property Details -->
+                <div class="bg-white rounded-xl shadow-md p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-primary mb-6">Property Details</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-3">
-                            <div class="flex items-center">
-                                <svg class="w-5 h-5 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-secondary">{{ $property->bedrooms ?? 'N/A' }} Bedrooms</span>
+                        <!-- Basic Information -->
+                        <div class="space-y-4">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Basic Information</h3>
+                            
+                            <div class="flex justify-between py-2 border-b border-gray-100">
+                                <span class="text-gray-600">Property Type:</span>
+                                <span class="font-medium">{{ ucfirst($property->property_type) }}</span>
                             </div>
-                            <div class="flex items-center">
-                                <svg class="w-5 h-5 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-secondary">{{ $property->bathrooms ?? 'N/A' }} Bathrooms</span>
+                            
+                            @if($property->property_category)
+                            <div class="flex justify-between py-2 border-b border-gray-100">
+                                <span class="text-gray-600">Category:</span>
+                                <span class="font-medium">{{ ucfirst($property->property_category) }}</span>
                             </div>
-                            <div class="flex items-center">
-                                <svg class="w-5 h-5 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-secondary">{{ number_format($property->area ?? 0) }} Square Feet</span>
+                            @endif
+                            
+                            @if($property->listing_type)
+                            <div class="flex justify-between py-2 border-b border-gray-100">
+                                <span class="text-gray-600">Listing Type:</span>
+                                <span class="font-medium">{{ $property->listing_type }}</span>
                             </div>
-                            <div class="flex items-center">
-                                <svg class="w-5 h-5 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-secondary">{{ ucfirst($property->property_type) }} Property</span>
+                            @endif
+                            
+                            <div class="flex justify-between py-2 border-b border-gray-100">
+                                <span class="text-gray-600">Status:</span>
+                                <span class="font-medium capitalize">{{ $property->status }}</span>
                             </div>
+                            
+                            @if($property->price_currency)
+                            <div class="flex justify-between py-2 border-b border-gray-100">
+                                <span class="text-gray-600">Currency:</span>
+                                <span class="font-medium">{{ $property->price_currency }}</span>
+                            </div>
+                            @endif
                         </div>
-                        <div class="space-y-3">
-                            <div class="flex items-center">
-                                <svg class="w-5 h-5 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-secondary">Prime Location</span>
+
+                        <!-- Property Features -->
+                        <div class="space-y-4">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Property Features</h3>
+                            
+                            @if($property->bedrooms)
+                            <div class="flex justify-between py-2 border-b border-gray-100">
+                                <span class="text-gray-600">Bedrooms:</span>
+                                <span class="font-medium">{{ $property->bedrooms }}</span>
                             </div>
-                            <div class="flex items-center">
-                                <svg class="w-5 h-5 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-secondary">Investment Opportunity</span>
+                            @endif
+                            
+                            @if($property->bathrooms)
+                            <div class="flex justify-between py-2 border-b border-gray-100">
+                                <span class="text-gray-600">Bathrooms:</span>
+                                <span class="font-medium">{{ $property->bathrooms }}</span>
                             </div>
-                            <div class="flex items-center">
-                                <svg class="w-5 h-5 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-secondary">Professional Management</span>
+                            @endif
+                            
+                            @if($property->area)
+                            <div class="flex justify-between py-2 border-b border-gray-100">
+                                <span class="text-gray-600">Area:</span>
+                                <span class="font-medium">{{ number_format($property->area) }} sq ft</span>
                             </div>
+                            @endif
+                            
+                            @if($property->parking_spaces)
+                            <div class="flex justify-between py-2 border-b border-gray-100">
+                                <span class="text-gray-600">Parking Spaces:</span>
+                                <span class="font-medium">{{ $property->parking_spaces }}</span>
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
+
+                <!-- Address Information -->
+                @if($property->address_line_1 || $property->city || $property->state || $property->postal_code)
+                <div class="bg-white rounded-xl shadow-md p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-primary mb-6">Address Information</h2>
+                    <div class="space-y-2">
+                        @if($property->address_line_1)
+                        <p class="text-gray-700">{{ $property->address_line_1 }}</p>
+                        @endif
+                        @if($property->address_line_2)
+                        <p class="text-gray-700">{{ $property->address_line_2 }}</p>
+                        @endif
+                        @if($property->city || $property->state || $property->postal_code)
+                        <p class="text-gray-700">
+                            @if($property->city){{ $property->city }}@endif
+                            @if($property->city && $property->state), @endif
+                            @if($property->state){{ $property->state }}@endif
+                            @if($property->postal_code) {{ $property->postal_code }}@endif
+                        </p>
+                        @endif
+                        @if($property->country)
+                        <p class="text-gray-700">{{ $property->country }}</p>
+                        @endif
+                    </div>
+                </div>
+                @endif
+
+                <!-- Amenities -->
+                @if($property->amenities && count($property->amenities) > 0)
+                <div class="bg-white rounded-xl shadow-md p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-primary mb-6">Amenities</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        @foreach($property->amenities as $amenity)
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span class="text-gray-700">{{ $amenity }}</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                @endif
+
             </div>
 
             <!-- Sidebar -->

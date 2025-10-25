@@ -12,8 +12,13 @@ class PropertyController extends Controller
         $query = Property::active();
 
         // Filter by property type
-        if ($request->filled('type')) {
-            $query->where('property_type', $request->type);
+        if ($request->filled('property_type')) {
+            $query->where('property_type', $request->property_type);
+        }
+
+        // Filter by listing type
+        if ($request->filled('listing_type')) {
+            $query->where('listing_type', $request->listing_type);
         }
 
         // Filter by price range
@@ -36,7 +41,11 @@ class PropertyController extends Controller
 
         // Filter by location
         if ($request->filled('location')) {
-            $query->where('location', 'like', '%' . $request->location . '%');
+            $query->where(function($q) use ($request) {
+                $q->where('location', 'like', '%' . $request->location . '%')
+                  ->orWhere('city', 'like', '%' . $request->location . '%')
+                  ->orWhere('state', 'like', '%' . $request->location . '%');
+            });
         }
 
         // Sort options
@@ -44,14 +53,23 @@ class PropertyController extends Controller
         $sortDirection = $request->get('direction', 'desc');
 
         switch ($sortBy) {
-            case 'price':
-                $query->orderBy('price', $sortDirection);
+            case 'price-high':
+                $query->orderBy('price', 'desc');
                 break;
-            case 'title':
-                $query->orderBy('title', $sortDirection);
+            case 'price-low':
+                $query->orderBy('price', 'asc');
+                break;
+            case 'area-large':
+                $query->orderBy('area', 'desc');
+                break;
+            case 'area-small':
+                $query->orderBy('area', 'asc');
+                break;
+            case 'oldest':
+                $query->orderBy('created_at', 'asc');
                 break;
             default:
-                $query->orderBy('created_at', $sortDirection);
+                $query->orderBy('created_at', 'desc');
         }
 
         $properties = $query->paginate(12);
