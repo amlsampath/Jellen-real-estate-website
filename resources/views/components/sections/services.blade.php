@@ -1,5 +1,5 @@
 <!-- Services Section -->
-<section class="services-section py-20 bg-white">
+<section id="services" class="services-section py-20 bg-white">
     <div class="container-custom">
         <!-- Section Header -->
         <div class="text-center mb-16">

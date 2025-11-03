@@ -1,5 +1,5 @@
 <!-- Founder Section -->
-<section class="founder-section">
+<section id="about" class="founder-section">
     <div class="container-custom">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
             <!-- Left Content -->

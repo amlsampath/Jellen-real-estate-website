@@ -20,7 +20,7 @@
                     Property Journey?
                 </span>
             </h2>
-            <p class="text-xl md:text-2xl text-gray-600 mx-auto leading-relaxed mb-8 max-w-4xl">
+            <p class="text-xl md:text-2xl text-gray-600 mx-auto leading-relaxed mb-8">
                 Let's discuss your property investment goals and find the perfect opportunities for you. Our expert team is here to guide you every step of the way.
             </p>
             

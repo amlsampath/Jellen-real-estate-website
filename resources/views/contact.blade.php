@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('components.layout.main-layout')
 
 @section('title', 'Contact Us - Govener Realty')
 @section('description', 'Get in touch with our expert property investment team. Free consultation and personalized guidance for your property journey.')

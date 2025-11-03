@@ -13,20 +13,21 @@
 
             <!-- Desktop Navigation -->
             <div class="hidden md:flex items-center space-x-8">
-                <div class="relative group">
-                    <a href="#about" class="text-secondary hover:text-primary transition-colors duration-200 flex items-center">
-                        About Us
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
+                                <div class="relative group">
+                    <a href="{{ url('/') }}" class="text-secondary hover:text-primary transition-colors duration-200 flex items-center">
+                       Home
                     </a>
                 </div>
                 <div class="relative group">
-                    <a href="#services" class="text-secondary hover:text-primary transition-colors duration-200 flex items-center">
+                    <a href="{{ url('/') }}#about" class="text-secondary hover:text-primary transition-colors duration-200 flex items-center">
+                        About Us
+                      
+                    </a>
+                </div>
+                <div class="relative group">
+                    <a href="{{ url('/') }}#services" class="text-secondary hover:text-primary transition-colors duration-200 flex items-center">
                         Services
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
+                        
                     </a>
                 </div>
                 <div class="relative group">
@@ -39,14 +40,7 @@
                         Blog
                     </a>
                 </div>
-                <div class="relative group">
-                    <a href="#resources" class="text-secondary hover:text-primary transition-colors duration-200 flex items-center">
-                        Resources
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </a>
-                </div>
+
                 <div class="relative group">
                     <a href="{{ route('contact') }}" class="text-secondary hover:text-primary transition-colors duration-200">
                         Contact
@@ -85,8 +79,8 @@
         <div class="mobile-menu hidden md:hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
                 <a href="{{ route('home') }}" class="block px-3 py-2 text-primary font-medium">Home</a>
-                <a href="#about" class="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200">About</a>
-                <a href="#services" class="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200">Services</a>
+                <a href="{{ url('/') }}#about" class="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200">About</a>
+                <a href="{{ url('/') }}#services" class="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200">Services</a>
                 <a href="{{ route('properties.index') }}" class="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200">Properties</a>
                 <a href="{{ route('blog.index') }}" class="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200">Blog</a>
                 <a href="{{ route('contact') }}" class="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200">Contact</a>
