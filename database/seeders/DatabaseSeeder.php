@@ -271,6 +271,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminSeeder::class,
             AgentContactSeeder::class,
+            BlogPostSeeder::class,
         ]);
     }
 }

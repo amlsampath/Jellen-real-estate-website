@@ -1,5 +1,5 @@
 <nav id="main-nav" class="bg-white shadow-sm transition-all duration-300 z-50">
-    <div class="container-custom">
+    <div class="container-custom px-4 lg:px-0">
         <div class="flex items-center justify-between h-16">
             <!-- Logo -->
             <div class="flex items-center">

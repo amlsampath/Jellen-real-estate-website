@@ -5,9 +5,9 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="bg-white py-16 lg:py-24">
-        <div class="container-custom">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section class="bg-white">
+        <div class="container-custom px-4 lg:px-0">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-12">
                 <!-- Left Content -->
                 <div class="space-y-8">
                     <h1 class="search-property-heading text-4xl md:text-5xl lg:text-6xl hero-text-content">
@@ -20,7 +20,7 @@
                     
                     <div class="space-y-6 text-lg search-property-text hero-text-content">
                         <p>
-                            We're a comprehensive real estate agency specializing in buying, selling, and leasing services across Australia. Whether you're looking to purchase your dream home, sell for maximum value, or lease your property, we provide expert guidance and personalized solutions that align with your financial goals.
+                            We're a comprehensive real estate agency specializing in buying, selling, and leasing services across Australia.
                         </p>
                         <p>
                             Book a FREE discovery call to learn more about how we can assist you with your property needs - from buying and selling to leasing solutions.
@@ -29,7 +29,7 @@
                     
                     <div class="flex flex-col sm:flex-row gap-4 hero-text-content">
                         <a href="#contact" class="search-property-button flex items-center justify-center">
-                            book a FREE discovery call
+                            Book a FREE discovery call
                             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
@@ -37,7 +37,7 @@
                     </div>
                     
                     <!-- Google Reviews -->
-                    <div class="flex items-center space-x-4 pt-6 hero-text-content">
+                    <!-- <div class="flex items-center space-x-4 pt-6 hero-text-content">
                         <img src="https://via.placeholder.com/80x30/4285F4/FFFFFF?text=Google" alt="Google" class="h-8">
                         <div class="flex items-center space-x-2">
                             <div class="flex">
@@ -50,11 +50,11 @@
                             <span class="text-primary font-semibold">4.9</span>
                             <span class="text-secondary">327 reviews</span>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Blog Preview -->
                     @if($blogPosts->count() > 0)
-                    <div class="bg-gradient-to-r from-accent to-accent-dark rounded-xl p-6 text-white hero-text-content">
+                    <!-- <div class="bg-gradient-to-r from-accent to-accent-dark rounded-xl p-6 text-white hero-text-content">
                         <div class="flex items-center space-x-3 mb-3">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
@@ -73,7 +73,7 @@
                                 Read More →
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                     @endif
                     
 
@@ -135,45 +135,35 @@
 
 
         <!-- Founder Section -->
-        <x-sections.founder />
+        <div class="px-4 lg:px-0">
+            <x-sections.founder />
+        </div>
 
         <!-- Services Section -->
-        <div class="scroll-animate-scale">
+        <div class="scroll-animate-scale px-4 lg:px-0">
             <x-sections.services />
         </div>
         <!-- Selling Properties Section -->
-        <div class="scroll-animate-right">
+        <div class="scroll-animate-right px-4 lg:px-0">
             <x-sections.selling-properties :sellingProperties="$sellingProperties" />
         </div>
 
     <!-- How It Works Section -->
-    <div class="scroll-animate">
+    <div class="scroll-animate px-4 lg:px-0">
         <x-sections.how-it-works />
     </div>
 
         <!-- Why Choose Us Section -->
-        <div class="scroll-animate-left">
+        <div class="scroll-animate-left px-4 lg:px-0">
             <x-sections.why-choose-us />
         </div>
 
         <!-- Blog Section -->
-        <div class="scroll-animate-scale">
+        <div class="scroll-animate-scale px-4 lg:px-0">
             <x-sections.blog-section :blogPosts="$blogPosts" />
         </div>
 
-        <!-- Floating Contact Elements -->
-    <div class="fixed bottom-4 left-4 z-50">
-        <div class="bg-primary text-white p-4 rounded-lg shadow-lg max-w-xs">
-            <div class="flex items-center justify-between">
-                <span class="text-sm font-medium">WANT INSIDE INVESTOR NEWS?</span>
-                <button class="text-white hover:text-gray-300">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
+
     
     <div class="fixed bottom-4 right-4 z-50">
         <div class="flex items-center space-x-2">

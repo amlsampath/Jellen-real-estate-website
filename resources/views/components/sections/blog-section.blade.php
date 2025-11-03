@@ -23,26 +23,6 @@
             <p class="text-xl md:text-2xl text-gray-600 mx-auto leading-relaxed mb-8">
                 Stay ahead of the market with expert analysis, investment strategies, and market trends from Australia's leading property experts
             </p>
-            
-            <!-- Quick Stats -->
-            <div class="flex flex-wrap justify-center gap-8 mb-12">
-                <div class="flex items-center space-x-3 bg-white rounded-full px-6 py-3 shadow-lg">
-                    <div class="w-3 h-3 bg-accent rounded-full"></div>
-                    <span class="text-gray-700 font-semibold">Expert Analysis</span>
-                </div>
-                <div class="flex items-center space-x-3 bg-white rounded-full px-6 py-3 shadow-lg">
-                    <div class="w-3 h-3 bg-primary rounded-full"></div>
-                    <span class="text-gray-700 font-semibold">Market Trends</span>
-                </div>
-                <div class="flex items-center space-x-3 bg-white rounded-full px-6 py-3 shadow-lg">
-                    <div class="w-3 h-3 bg-accent rounded-full"></div>
-                    <span class="text-gray-700 font-semibold">Investment Tips</span>
-                </div>
-                <div class="flex items-center space-x-3 bg-white rounded-full px-6 py-3 shadow-lg">
-                    <div class="w-3 h-3 bg-primary rounded-full"></div>
-                    <span class="text-gray-700 font-semibold">Success Stories</span>
-                </div>
-            </div>
         </div>
 
         <!-- Blog Posts Grid -->
@@ -74,13 +54,7 @@
                             {{ $post->category }}
                         </span>
                     </div>
-                    <div class="absolute top-4 right-4">
-                        <button class="bg-white bg-opacity-95 backdrop-blur-sm text-gray-600 p-3 rounded-lg hover:bg-red-500 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 group">
-                            <svg class="w-4 h-4 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                            </svg>
-                        </button>
-                    </div>
+                    
                 </div>
                 <div class="p-6">
                     <div class="flex items-center space-x-4 mb-4">
@@ -95,7 +69,7 @@
                             {{ $post->title }}
                         </a>
                     </h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">{{ Str::limit($post->excerpt, 120) }}</p>
+                    <!-- <p class="text-gray-600 mb-6 leading-relaxed">{{ Str::limit($post->excerpt, 120) }}</p> -->
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
                             <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center shadow-md">
