@@ -23,10 +23,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Create admin user
-        User::factory()->create([
-            'name' => 'Admin User',
-            'email' => 'admin@realestate.com',
-        ]);
+        User::updateOrCreate(
+            ['email' => 'admin@realestate.com'],
+            [
+                'name' => 'Admin User',
+            ]
+        );
 
         // Seed statistics (4 key stats for homepage)
         Statistic::factory()->create([
@@ -205,6 +207,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Luxury Modern Villa',
             'description' => 'Stunning contemporary villa with panoramic city views, featuring 5 bedrooms, 4 bathrooms, and a private pool.',
             'property_type' => 'sale',
+            'listing_type' => 'For Sale',
             'price' => 2500000,
             'location' => 'Beverly Hills, CA',
             'bedrooms' => 5,
@@ -220,6 +223,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Downtown Penthouse',
             'description' => 'Exclusive penthouse with 360-degree city views, modern amenities, and premium finishes throughout.',
             'property_type' => 'sale',
+            'listing_type' => 'For Sale',
             'price' => 1800000,
             'location' => 'Manhattan, NY',
             'bedrooms' => 3,
@@ -235,6 +239,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Beachfront Condo',
             'description' => 'Oceanfront luxury condo with direct beach access, resort-style amenities, and breathtaking sunset views.',
             'property_type' => 'rent',
+            'listing_type' => 'For Rent',
             'price' => 8500,
             'location' => 'Miami Beach, FL',
             'bedrooms' => 2,
@@ -250,6 +255,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Historic Brownstone',
             'description' => 'Beautifully restored historic brownstone with original architectural details and modern updates.',
             'property_type' => 'sale',
+            'listing_type' => 'For Sale',
             'price' => 1200000,
             'location' => 'Brooklyn, NY',
             'bedrooms' => 4,
@@ -263,6 +269,114 @@ class DatabaseSeeder extends Seeder
 
         // Seed additional properties
         Property::factory(16)->create();
+
+        // Seed selling properties (For Sale) - 15+ properties
+        $australianLocations = [
+            'Sydney, NSW',
+            'Melbourne, VIC',
+            'Brisbane, QLD',
+            'Perth, WA',
+            'Adelaide, SA',
+            'Gold Coast, QLD',
+            'Newcastle, NSW',
+            'Canberra, ACT',
+            'Sunshine Coast, QLD',
+            'Wollongong, NSW',
+            'Hobart, TAS',
+            'Geelong, VIC',
+            'Townsville, QLD',
+            'Cairns, QLD',
+            'Toowoomba, QLD'
+        ];
+
+        $sellingPropertyTitles = [
+            'Modern Family Home',
+            'Contemporary Investment Property',
+            'Premium Investment Property',
+            'Luxury Suburban Residence',
+            'Spacious Family House',
+            'Stylish Modern Apartment',
+            'Charming Heritage Home',
+            'Elegant Townhouse',
+            'Contemporary Villa',
+            'Premium Family Estate',
+            'Modern Duplex',
+            'Luxury Penthouse',
+            'Spacious Family Home',
+            'Investment Property Opportunity',
+            'Premium Residential Property'
+        ];
+
+        for ($i = 0; $i < 15; $i++) {
+            Property::factory()->create([
+                'title' => $sellingPropertyTitles[$i] ?? fake()->randomElement($sellingPropertyTitles),
+                'description' => fake()->paragraphs(3, true),
+                'property_type' => 'sale',
+                'listing_type' => 'For Sale',
+                'price' => fake()->numberBetween(400000, 2500000),
+                'location' => $australianLocations[$i] ?? fake()->randomElement($australianLocations),
+                'bedrooms' => fake()->numberBetween(2, 5),
+                'bathrooms' => fake()->numberBetween(1, 4),
+                'area' => fake()->numberBetween(1000, 5000),
+                'featured_image' => 'properties/property-' . fake()->numberBetween(1, 20) . '.jpg',
+                'gallery_images' => [
+                    'properties/gallery-' . fake()->numberBetween(1, 20) . '.jpg',
+                    'properties/gallery-' . fake()->numberBetween(1, 20) . '.jpg',
+                    'properties/gallery-' . fake()->numberBetween(1, 20) . '.jpg'
+                ],
+                'status' => 'active',
+                'featured' => fake()->boolean(30) // 30% chance of being featured
+            ]);
+        }
+
+        // Seed recently sold properties (8-10 properties)
+        $soldPropertyTitles = [
+            'Luxury Beachfront Villa',
+            'Modern City Apartment',
+            'Spacious Family Home',
+            'Elegant Suburban Estate',
+            'Contemporary Townhouse',
+            'Premium Investment Property',
+            'Heritage Style Residence',
+            'Modern Duplex',
+            'Luxury Penthouse',
+            'Charming Family Home'
+        ];
+
+        $soldLocations = [
+            'Sydney, NSW',
+            'Melbourne, VIC',
+            'Brisbane, QLD',
+            'Perth, WA',
+            'Adelaide, SA',
+            'Gold Coast, QLD',
+            'Newcastle, NSW',
+            'Canberra, ACT',
+            'Sunshine Coast, QLD',
+            'Wollongong, NSW'
+        ];
+
+        for ($i = 0; $i < 10; $i++) {
+            Property::factory()->create([
+                'title' => $soldPropertyTitles[$i] ?? fake()->randomElement($soldPropertyTitles),
+                'description' => fake()->paragraphs(3, true),
+                'property_type' => 'sale',
+                'listing_type' => 'For Sale',
+                'price' => fake()->numberBetween(450000, 2800000),
+                'location' => $soldLocations[$i] ?? fake()->randomElement($soldLocations),
+                'bedrooms' => fake()->numberBetween(2, 5),
+                'bathrooms' => fake()->numberBetween(1, 4),
+                'area' => fake()->numberBetween(1200, 5500),
+                'featured_image' => 'properties/property-' . fake()->numberBetween(1, 20) . '.jpg',
+                'gallery_images' => [
+                    'properties/gallery-' . fake()->numberBetween(1, 20) . '.jpg',
+                    'properties/gallery-' . fake()->numberBetween(1, 20) . '.jpg',
+                    'properties/gallery-' . fake()->numberBetween(1, 20) . '.jpg'
+                ],
+                'status' => 'sold',
+                'featured' => fake()->boolean(25) // 25% chance of being featured
+            ]);
+        }
 
         // Seed contact submissions
         ContactSubmission::factory(15)->create();

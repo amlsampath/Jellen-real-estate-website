@@ -2,55 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\BlogPost;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\File;
-
-class BlogPostSeeder extends Seeder
-{
-    public function run(): void
-    {
-        // Ensure destination directory exists
-        $destDir = public_path('images/blog');
-        if (!File::exists($destDir)) {
-            File::makeDirectory($destDir, 0755, true);
-        }
-
-        // Candidate demo images (copy if present)
-        $sourceImages = [
-            public_path('images/properties/ecoprops-slide-1.jpg'),
-            public_path('images/properties/kelsey-collage.jpg'),
-            public_path('images/properties/homelands-c3.webp'),
-            public_path('images/properties/homelandsskyline-bayfonte.jpg'),
-        ];
-
-        $copied = [];
-        foreach ($sourceImages as $path) {
-            if (File::exists($path)) {
-                $filename = time() . '_' . basename($path);
-                File::copy($path, $destDir . DIRECTORY_SEPARATOR . $filename);
-                $copied[] = $filename;
-            }
-        }
-
-        // Create posts
-        BlogPost::factory()->count(6)->create()->each(function (BlogPost $post) use (&$copied) {
-            // Assign a demo image if available
-            if (count($copied) > 0) {
-                $post->featured_image = $copied[array_rand($copied)];
-                $post->save();
-            }
-        });
-    }
-}
-
-<?php
-
-namespace Database\Seeders;
-
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\BlogPost;
+use Illuminate\Support\Str;
 
 class BlogPostSeeder extends Seeder
 {
@@ -129,6 +84,19 @@ class BlogPostSeeder extends Seeder
         ];
 
         foreach ($blogPosts as $post) {
+            // Generate slug from title if not provided
+            if (!isset($post['slug'])) {
+                $post['slug'] = Str::slug($post['title']);
+            }
+            
+            // Ensure unique slug
+            $originalSlug = $post['slug'];
+            $counter = 1;
+            while (BlogPost::where('slug', $post['slug'])->exists()) {
+                $post['slug'] = $originalSlug . '-' . $counter;
+                $counter++;
+            }
+            
             BlogPost::create($post);
         }
     }

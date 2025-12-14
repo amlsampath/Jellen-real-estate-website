@@ -46,7 +46,14 @@ class HomeController extends Controller
         $sellingProperties = Property::where('listing_type', 'For Sale')
             ->where('status', 'active')
             ->orderBy('created_at', 'desc')
-            ->take(3)
+            ->take(6)
+            ->get();
+
+        // Get recently sold properties
+        $recentlySoldProperties = Property::where('listing_type', 'For Sale')
+            ->where('status', 'sold')
+            ->orderBy('updated_at', 'desc')
+            ->take(6)
             ->get();
 
         return view('home', compact(
@@ -57,6 +64,7 @@ class HomeController extends Controller
             'teamMembers',
             'testimonials',
             'sellingProperties',
+            'recentlySoldProperties',
             'blogPosts'
         ));
     }

@@ -1,4 +1,4 @@
-<!-- How It Works Section -->
+{{-- <!-- How It Works Section -->
 <section class="how-it-works-section py-20" aria-label="Steps">
     <div class="container-custom">
         <!-- Section Header -->
@@ -45,4 +45,4 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}

@@ -162,7 +162,7 @@
                         
                         <!-- Action Buttons -->
                         <div class="flex space-x-3">
-                            <a href="{{ route('properties.show', $property->slug) }}" 
+                            <a href="{{ $property->slug ? route('properties.show', $property->slug) : '#' }}" 
                                class="flex-1 bg-primary text-white text-center py-2 px-4 rounded-lg hover:bg-primary-dark transition-colors font-medium">
                                 View Details
                             </a>

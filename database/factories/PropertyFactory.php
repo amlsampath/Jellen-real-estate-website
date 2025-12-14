@@ -19,6 +19,14 @@ class PropertyFactory extends Factory
         $propertyTypes = ['sale', 'rent', 'lease'];
         $propertyType = fake()->randomElement($propertyTypes);
         
+        // Map property_type to listing_type
+        $listingTypeMap = [
+            'sale' => 'For Sale',
+            'rent' => 'For Rent',
+            'lease' => 'For Lease'
+        ];
+        $listingType = $listingTypeMap[$propertyType];
+        
         $locations = [
             'Downtown Manhattan, NY',
             'Beverly Hills, CA',
@@ -43,6 +51,7 @@ class PropertyFactory extends Factory
             ]),
             'description' => fake()->paragraphs(3, true),
             'property_type' => $propertyType,
+            'listing_type' => $listingType,
             'price' => fake()->numberBetween(300000, 5000000),
             'location' => fake()->randomElement($locations),
             'bedrooms' => fake()->numberBetween(1, 6),

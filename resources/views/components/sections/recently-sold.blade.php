@@ -1,20 +1,20 @@
-<!-- Selling Properties Section -->
-<section class="selling-properties-section py-20 bg-gray-50">
+<!-- Recently Sold Properties Section -->
+<section class="recently-sold-section py-20 bg-white">
     <div class="container-custom">
         <!-- Section Header -->
         <div class="text-center mb-16">
             <div class="mb-6">
-                <span class="text-sm font-semibold text-gray-700 uppercase tracking-wide">AS NEW</span>
+                <span class="text-sm font-semibold text-gray-700 uppercase tracking-wide">SOLD PROPERTIES</span>
             </div>
-            <h2 class="text-4xl font-bold text-gray-900 mb-6 leading-tight">Selling Properties</h2>
+            <h2 class="text-4xl font-bold text-gray-900 mb-6 leading-tight">Recently Sold</h2>
             <p class="text-xl text-gray-600 mx-auto leading-relaxed">
-                Discover our portfolio of high-performing investment properties with exceptional returns.
+                Explore our successful property sales and see the results we've achieved for our clients.
             </p>
         </div>
 
         <!-- Properties Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @foreach($sellingProperties as $property)
+            @foreach($recentlySoldProperties as $property)
                 <div class="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
                     <!-- Property Image -->
                     <div class="relative h-56 overflow-hidden">
@@ -30,13 +30,17 @@
                                 Govener Realty
                             </span>
                         </div>
+                        
+                        <!-- Sold Badge -->
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-green-600 text-white px-3 py-1 rounded-lg text-xs font-semibold uppercase">
+                                SOLD
+                            </span>
+                        </div>
                     </div>
                     
                     <!-- Property Content -->
                     <div class="p-6">
-                        <!-- Price (left-aligned) -->
-
-                        
                         <!-- Property Title -->
                         <div class="mb-4 text-left">
                             <h3 class="text-lg font-semibold text-gray-900">
@@ -88,9 +92,10 @@
 
         <!-- View All Button -->
         <div class="text-center mt-12">
-            <a href="{{ route('properties.index') }}" class="inline-flex items-center px-6 py-3 border border-gray-400 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 uppercase tracking-wide">
-                VIEW ALL PROPERTIES
+            <a href="{{ route('properties.index', ['listing_type' => 'Sold']) }}" class="inline-flex items-center px-6 py-3 border border-gray-400 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 uppercase tracking-wide">
+                VIEW ALL SOLD PROPERTIES
             </a>
         </div>
     </div>
 </section>
+

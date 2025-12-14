@@ -3,11 +3,8 @@
         <div class="flex items-center justify-between h-16">
             <!-- Logo -->
             <div class="flex items-center">
-                <a href="{{ route('home') }}" class="flex items-center space-x-2">
-                    <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
-                        <span class="text-white font-bold text-lg">G</span>
-                    </div>
-                    <span class="text-xl font-bold text-primary search-property-heading">Govener Realty</span>
+                <a href="{{ route('home') }}" class="flex items-center">
+                    <img src="{{ asset('images/logo-new.jpeg') }}" alt="Govener Realty" class="h-8 w-auto">
                 </a>
             </div>
 

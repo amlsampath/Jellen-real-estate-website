@@ -262,7 +262,7 @@
                             @endif
                         </div>
                         <div class="property-price mb-4">${{ number_format($relatedProperty->price) }}</div>
-                        <a href="{{ route('properties.show', $relatedProperty->slug) }}" class="btn-primary w-full text-center">
+                        <a href="{{ $relatedProperty->slug ? route('properties.show', $relatedProperty->slug) : '#' }}" class="btn-primary w-full text-center">
                             View Details
                         </a>
                     </div>

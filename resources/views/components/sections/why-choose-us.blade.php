@@ -1,4 +1,4 @@
-<!-- Why Choose Us Section -->
+{{-- <!-- Why Choose Us Section -->
 <section class="why-choose-us-section py-20 bg-gray-50">
     <div class="container-custom">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
@@ -78,4 +78,4 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
