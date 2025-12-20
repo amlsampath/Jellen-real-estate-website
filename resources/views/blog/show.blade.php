@@ -5,7 +5,7 @@
 
 @section('content')
 <!-- Blog Post Header -->
-<section class="bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 py-24 relative overflow-hidden">
+<section class="bg-accent py-24 relative overflow-hidden">
     <!-- Background Pattern -->
     <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
     
@@ -13,42 +13,29 @@
         <div class=" mx-auto">
             <!-- Breadcrumb -->
             <nav class="mb-8">
-                <ol class="flex  space-x-2 text-sm">
-                    <li><a href="{{ route('home') }}" class="  transition-colors">Home</a></li>
-                    <li class="50">/</li>
-                    <li><a href="{{ route('blog.index') }}" class=" transition-colors">Blog</a></li>
-                    <li class="">/</li>
-                    <li class="font-medium">{{ $post->category ?? 'General' }}</li>
+                <ol class="flex  space-x-2 text-sm text-white">
+                    <li><a href="{{ route('home') }}" class="text-white transition-colors">Home</a></li>
+                    <li class="text-white">/</li>
+                    <li><a href="{{ route('blog.index') }}" class="text-white transition-colors">Blog</a></li>
+                    <li class="text-white">/</li>
+                    <li class="font-medium text-white">{{ $post->category ?? 'General' }}</li>
                 </ol>
             </nav>
             
             <!-- Category & Meta -->
             <div class="flex items-center justify-start space-x-4 mb-8">
-                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full  font-medium text-sm border border-white/30">{{ $post->category ?? 'General' }}</span>
-                <span class="">•</span>
-                <span class=" font-medium text-sm">{{ $post->created_at->format('M d, Y') }}</span>
-                <span class="">•</span>
-                <span class=" font-medium text-sm">{{ $post->reading_time ?? 5 }} min read</span>
+                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white font-medium text-sm border border-white/30">{{ $post->category ?? 'General' }}</span>
+                <span class="text-white">•</span>
+                <span class="text-white font-medium text-sm">{{ $post->created_at->format('M d, Y') }}</span>
+                <span class="text-white">•</span>
+                <span class="text-white font-medium text-sm">{{ $post->reading_time ?? 5 }} min read</span>
             </div>
             
             <!-- Title -->
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold   leading-tight tracking-tight">{{ $post->title }}</h1>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">{{ $post->title }}</h1>
             
             <!-- Excerpt -->
-            <p class="text-lg md:text-xl   mx-auto leading-relaxed font-light">{{ $post->excerpt }}</p>
-            
-            <!-- Author Info -->
-            <div class="flex items-center justify-center">
-                <div class="flex items-center space-x-4 bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4 border border-white/20">
-                    <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                        <span class="font-bold text-lg">{{ substr($post->author ?? 'A', 0, 1) }}</span>
-                    </div>
-                    <div class="text-left">
-                        <p class="font-semibold ">{{ $post->author ?? 'Admin' }}</p>
-                        <p class="text-sm ">{{ $post->views ?? 0 }} views</p>
-                    </div>
-                </div>
-            </div>
+            <p class="text-lg md:text-xl text-white mx-auto leading-relaxed font-light">{{ $post->excerpt }}</p>
         </div>
     </div>
 </section>
@@ -159,7 +146,7 @@
 <!-- Call to Action -->
 <section class="py-16 bg-gray-50">
     <div class="container-custom">
-        <div class="max-w-4xl mx-auto text-center">
+        <div class=" mx-auto text-center">
             <h2 class="text-3xl font-bold text-gray-900 mb-4">Ready to Start Your Property Investment Journey?</h2>
             <p class="text-lg text-gray-600 mb-8">Get expert guidance from our team of property investment specialists.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -179,27 +166,53 @@
 
 @push('styles')
 <style>
+/* Override Tailwind Typography prose class - Force all text to black */
+.blog-content.prose * {
+    color: #000000 !important;
+}
+
+.blog-content.prose,
+.blog-content.prose p,
+.blog-content.prose h1,
+.blog-content.prose h2,
+.blog-content.prose h3,
+.blog-content.prose h4,
+.blog-content.prose h5,
+.blog-content.prose h6,
+.blog-content.prose li,
+.blog-content.prose ul,
+.blog-content.prose ol,
+.blog-content.prose strong,
+.blog-content.prose em,
+.blog-content.prose a,
+.blog-content.prose span,
+.blog-content.prose div {
+    color: #000000 !important;
+}
+
 /* Clean, professional typography */
 .blog-content {
     font-size: 18px;
     line-height: 1.7;
-    color: #374151;
+    color: #000000 !important;
     font-weight: 400;
 }
 
-.blog-content h1 {
+.blog-content h1,
+.blog-content.prose h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #111827;
+    color: #000000 !important;
     margin-top: 2rem;
     margin-bottom: 1rem;
     line-height: 1.2;
 }
 
-.blog-content h2 {
+.blog-content h2,
+.blog-content.prose h2 {
     font-size: 2rem;
     font-weight: 600;
-    color: #111827;
+    color: #000000 !important;
     margin-top: 2rem;
     margin-bottom: 1rem;
     line-height: 1.3;
@@ -207,62 +220,77 @@
     padding-bottom: 0.5rem;
 }
 
-.blog-content h3 {
+.blog-content h3,
+.blog-content.prose h3 {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #111827;
+    color: #000000 !important;
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
     line-height: 1.4;
 }
 
-.blog-content h4 {
+.blog-content h4,
+.blog-content.prose h4 {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #111827;
+    color: #000000 !important;
     margin-top: 1.25rem;
     margin-bottom: 0.5rem;
     line-height: 1.4;
 }
 
-.blog-content p {
+.blog-content p,
+.blog-content.prose p {
     margin-bottom: 1.25rem;
-    color: #374151;
+    color: #000000 !important;
     font-size: 18px;
     line-height: 1.7;
 }
 
-.blog-content ul, .blog-content ol {
+.blog-content ul, 
+.blog-content ol,
+.blog-content.prose ul, 
+.blog-content.prose ol {
     margin-bottom: 1.25rem;
     padding-left: 1.5rem;
 }
 
-.blog-content li {
+.blog-content li,
+.blog-content.prose li {
     margin-bottom: 0.5rem;
-    color: #374151;
+    color: #000000 !important;
     font-size: 18px;
     line-height: 1.6;
 }
 
-.blog-content strong {
+.blog-content strong,
+.blog-content.prose strong {
     font-weight: 600;
-    color: #111827;
+    color: #000000 !important;
 }
 
-.blog-content em {
+.blog-content em,
+.blog-content.prose em {
     font-style: italic;
-    color: #4b5563;
+    color: #000000 !important;
 }
 
-.blog-content blockquote {
+.blog-content blockquote,
+.blog-content.prose blockquote {
     border-left: 4px solid #3b82f6;
     padding-left: 1.5rem;
     margin: 1.5rem 0;
     font-style: italic;
-    color: #4b5563;
+    color: #000000 !important;
     background-color: #f8fafc;
     padding: 1.5rem;
     border-radius: 0.5rem;
+}
+
+.blog-content a,
+.blog-content.prose a {
+    color: #000000 !important;
 }
 
 .blog-content code {
