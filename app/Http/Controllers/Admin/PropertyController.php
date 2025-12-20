@@ -415,4 +415,15 @@ class PropertyController extends Controller
             ]
         ]);
     }
+    
+    public function markAsDone(Property $property)
+    {
+        $property->update([
+            'status' => 'sold',
+            'updated_at' => now()
+        ]);
+        
+        return redirect()->route('admin.properties.index')
+                       ->with('success', 'Property marked as done and moved to Our Completed Projects section.');
+    }
 }

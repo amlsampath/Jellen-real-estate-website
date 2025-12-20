@@ -20,6 +20,10 @@
         }
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('images/tab-icon.png') }}">
+    
     @stack('styles')
 </head>
 <body class="bg-gray-50">
@@ -58,12 +62,11 @@
                         <span>Blog Posts</span>
                     </a>
                     
-            
-            <a href="{{ route('admin.agent-contact.index') }}" 
-               class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200 {{ request()->routeIs('admin.agent-contact.*') ? 'bg-primary text-white' : '' }}">
-                <i class="fas fa-user-tie w-5"></i>
-                <span>Agent Contact</span>
-            </a>
+                    {{-- <a href="{{ route('admin.agent-contact.index') }}" 
+                       class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200 {{ request()->routeIs('admin.agent-contact.*') ? 'bg-primary text-white' : '' }}">
+                        <i class="fas fa-user-tie w-5"></i>
+                        <span>Agent Contact</span>
+                    </a> --}}
                 </div>
             </nav>
         </div>

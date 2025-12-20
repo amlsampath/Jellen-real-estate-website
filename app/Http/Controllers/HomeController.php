@@ -42,8 +42,8 @@ class HomeController extends Controller
             ->recent(3)
             ->get();
 
-        // Get selling properties from database
-        $sellingProperties = Property::where('listing_type', 'For Sale')
+        // Get recent properties from database (all listing types)
+        $sellingProperties = Property::whereIn('listing_type', ['For Sale', 'For Rent', 'For Lease'])
             ->where('status', 'active')
             ->orderBy('created_at', 'desc')
             ->take(6)

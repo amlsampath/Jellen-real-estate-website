@@ -14,30 +14,30 @@
     <div class="container-custom relative z-10">
         <div class="text-center">
             <div class="inline-block mb-6">
-                <span class="bg-opacity-20 px-4 py-2 rounded-full text-sm font-semibold tracking-wide uppercase">
+                <span class="bg-opacity-20 px-4 py-2 rounded-full text-sm font-semibold tracking-wide uppercase text-white">
                     📚 Knowledge Hub
                 </span>
             </div>
-            <h1 class="text-5xl  lg:text-7xl font-bold mb-6 leading-tight">
+            <h1 class="text-5xl  lg:text-7xl font-bold mb-6 leading-tight text-white">
                 Property Investment
-                <span class="block text-accent">Blog</span>
+                <span class="block text-white">Blog</span>
             </h1>
-            <p class="text-xl md:text-2xl mb-12 mx-auto leading-relaxed opacity-90">
+            <p class="text-xl md:text-2xl mb-12 mx-auto leading-relaxed opacity-90 text-white">
                 Expert insights, market trends, and investment strategies from Australia's leading property experts
             </p>
             
             <!-- Enhanced Category Tags -->
             <div class="flex flex-wrap justify-center gap-3 mb-8">
-                <span class="bg-white bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold hover:bg-opacity-30 transition-all duration-300 cursor-pointer">
+                <span class="bg-white bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold hover:bg-opacity-30 transition-all duration-300 cursor-pointer text-white">
                     🏠 Property Investment
                 </span>
-                <span class="bg-white bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold hover:bg-opacity-30 transition-all duration-300 cursor-pointer">
+                <span class="bg-white bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold hover:bg-opacity-30 transition-all duration-300 cursor-pointer text-white">
                     📊 Market Analysis
                 </span>
-                <span class="bg-white bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold hover:bg-opacity-30 transition-all duration-300 cursor-pointer">
+                <span class="bg-white bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold hover:bg-opacity-30 transition-all duration-300 cursor-pointer text-white">
                     💡 Investment Tips
                 </span>
-                <span class="bg-white bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold hover:bg-opacity-30 transition-all duration-300 cursor-pointer">
+                <span class="bg-white bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold hover:bg-opacity-30 transition-all duration-300 cursor-pointer text-white">
                     📰 Real Estate News
                 </span>
             </div>

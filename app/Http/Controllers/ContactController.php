@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ContactSubmission;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactFormMail;
 
 class ContactController extends Controller
 {
@@ -31,6 +33,22 @@ class ContactController extends Controller
             'message' => $request->message,
             'property_interest' => $request->property_interest
         ]);
+
+        // Send email notification
+        try {
+            Mail::to('jellen@govenerrealty.com.au')->send(
+                new ContactFormMail(
+                    $request->name,
+                    $request->email,
+                    $request->phone,
+                    $request->property_interest,
+                    $request->message
+                )
+            );
+        } catch (\Exception $e) {
+            // Log the error but don't break the user experience
+            \Log::error('Failed to send contact form email: ' . $e->getMessage());
+        }
 
         return redirect()->back()->with('success', 'Thank you for your message! We will get back to you soon.');
     }

@@ -37,9 +37,6 @@
                     <div class="bg-white rounded-xl shadow-md p-6 sticky top-8">
                         <div class="flex justify-between items-start mb-4">
                             <h1 class="text-2xl font-bold text-primary">{{ $property->title }}</h1>
-                            @if($property->featured)
-                                <span class="bg-accent text-primary px-3 py-1 rounded-full text-sm font-medium">Featured</span>
-                            @endif
                         </div>
                         
                         <div class="text-3xl font-bold text-primary mb-4">${{ number_format($property->price) }}</div>
@@ -218,7 +215,7 @@
 
             <!-- Sidebar -->
             <div class="lg:col-span-1">
-                <!-- Agent Contact -->
+                {{-- <!-- Agent Contact -->
                 @php
                     $agent = \App\Models\AgentContact::active()->first();
                 @endphp
@@ -234,7 +231,7 @@
                             <a href="mailto:info@govenerrealty.com" class="btn-outline w-full text-center">✉️ Email Us</a>
                         </div>
                     </div>
-                @endif
+                @endif --}}
             </div>
         </div>
     </div>

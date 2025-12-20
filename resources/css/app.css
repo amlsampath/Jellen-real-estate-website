@@ -1493,3 +1493,20 @@
         @apply py-20;
     }
 }
+
+/* Properties Page Specific Styles */
+/* Sort dropdown selected value styling - make the select text green */
+.properties-sort-select {
+    color: var(--color-accent) !important;
+    font-weight: 600;
+}
+
+.properties-sort-select option {
+    color: var(--color-text-primary);
+    font-weight: normal;
+}
+
+.properties-sort-select option:checked {
+    color: var(--color-accent);
+    font-weight: 600;
+}

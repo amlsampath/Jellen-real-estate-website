@@ -199,7 +199,7 @@
                     </div>
                 </div>
 
-                <!-- Business Hours -->
+                {{-- <!-- Business Hours -->
                 <div class="bg-white rounded-2xl shadow-xl p-8">
                     <h3 class="text-2xl font-bold text-gray-900 mb-6">Business Hours</h3>
                     <div class="space-y-3">
@@ -216,7 +216,7 @@
                             <span class="text-gray-600">By Appointment</span>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Quick Contact CTA -->
                 <div class="bg-gradient-to-r from-accent to-accent-dark rounded-2xl shadow-xl p-8 text-white">

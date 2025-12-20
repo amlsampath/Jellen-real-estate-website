@@ -6,9 +6,9 @@
             <div class="mb-6">
                 <span class="text-sm font-semibold text-gray-700 uppercase tracking-wide">AS NEW</span>
             </div>
-            <h2 class="text-4xl font-bold text-gray-900 mb-6 leading-tight">Selling Properties</h2>
+            <h2 class="text-4xl font-bold text-gray-900 mb-6 leading-tight">All Properties</h2>
             <p class="text-xl text-gray-600 mx-auto leading-relaxed">
-                Discover our portfolio of high-performing investment properties with exceptional returns.
+                Discover our latest properties available for sale, rent, and lease.
             </p>
         </div>
 
@@ -29,6 +29,23 @@
                             <span class="bg-primary text-white px-3 py-1 rounded-lg text-xs font-semibold uppercase">
                                 Govener Realty
                             </span>
+                        </div>
+                        
+                        <!-- Listing Type Badge -->
+                        <div class="absolute top-4 right-4">
+                            @if($property->listing_type === 'For Sale')
+                                <span class="bg-green-600 text-white px-3 py-1 rounded-lg text-xs font-semibold uppercase">
+                                    For Sale
+                                </span>
+                            @elseif($property->listing_type === 'For Rent')
+                                <span class="bg-blue-600 text-white px-3 py-1 rounded-lg text-xs font-semibold uppercase">
+                                    For Rent
+                                </span>
+                            @elseif($property->listing_type === 'For Lease')
+                                <span class="bg-purple-600 text-white px-3 py-1 rounded-lg text-xs font-semibold uppercase">
+                                    For Lease
+                                </span>
+                            @endif
                         </div>
                     </div>
                     

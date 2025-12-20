@@ -43,7 +43,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         
         // Property management routes
         Route::resource('properties', App\Http\Controllers\Admin\PropertyController::class);
-        Route::get('properties/{property}/view', [App\Http\Controllers\Admin\PropertyController::class, 'view'])->name('properties.view');
+        Route::get('properties/{property:id}/view', [App\Http\Controllers\Admin\PropertyController::class, 'view'])->name('properties.view');
+        Route::patch('properties/{property:id}/mark-done', [App\Http\Controllers\Admin\PropertyController::class, 'markAsDone'])->name('properties.mark-done');
         
         // Blog post management routes (temporarily without middleware for testing)
         Route::resource('blog-posts', App\Http\Controllers\Admin\BlogPostController::class);

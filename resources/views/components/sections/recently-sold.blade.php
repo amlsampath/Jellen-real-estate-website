@@ -6,7 +6,7 @@
             <div class="mb-6">
                 <span class="text-sm font-semibold text-gray-700 uppercase tracking-wide">SOLD PROPERTIES</span>
             </div>
-            <h2 class="text-4xl font-bold text-gray-900 mb-6 leading-tight">Recently Sold</h2>
+            <h2 class="text-4xl font-bold text-gray-900 mb-6 leading-tight">Our Completed Projects</h2>
             <p class="text-xl text-gray-600 mx-auto leading-relaxed">
                 Explore our successful property sales and see the results we've achieved for our clients.
             </p>

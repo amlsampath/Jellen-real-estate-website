@@ -159,6 +159,19 @@
                                        title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </a>
+                                    @if($property->status !== 'sold')
+                                    <form method="POST" action="{{ route('admin.properties.mark-done', $property) }}" 
+                                          class="inline" 
+                                          onsubmit="return confirm('Mark this property as done? It will be moved to Our Completed Projects section.')">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" 
+                                                class="text-orange-600 hover:text-orange-700 transition-colors duration-200"
+                                                title="Mark as Done">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                    </form>
+                                    @endif
                                     <form method="POST" action="{{ route('admin.properties.destroy', $property) }}" 
                                           class="inline" 
                                           onsubmit="return confirm('Are you sure you want to delete this property?')">

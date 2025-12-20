@@ -5,14 +5,14 @@
 
 @section('content')
 <!-- Properties Hero Section -->
-<section class="bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 py-20 relative overflow-hidden">
+<section class="bg-gradient-to-br from-[#a9c638] via-[#9ab32f] to-[#8ba026] py-20 relative overflow-hidden">
     <!-- Background Pattern -->
     <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
     
     <div class="container-custom relative z-10">
         <div class=" mx-auto text-center">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Our Properties</h1>
-            <p class="text-lg md:text-xl  mx-auto leading-relaxed">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white">Our Properties</h1>
+            <p class="text-lg md:text-xl text-white mx-auto leading-relaxed">
                 Discover exceptional properties across Australia. From luxury homes to prime investment opportunities, find your perfect property with our expert guidance.
             </p>
         </div>
@@ -20,15 +20,19 @@
 </section>
 
 <!-- Properties Filter Section -->
-<section class="py-12 bg-gray-50">
+<section class="py-12 bg-gray-50 -mt-8 relative z-20">
     <div class="container-custom">
         <div class="max-w-6xl mx-auto">
-            <form method="GET" action="{{ route('properties.index') }}" class="bg-white rounded-xl shadow-lg p-6">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <!-- Property Type Filter -->
-                    <div>
-                        <!-- <label class="block text-sm font-medium text-gray-700 mb-2">Property Type</label> -->
-                        <select name="property_type" class="w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary">
+            <div class="hero-search-container-integrated bg-white overflow-hidden w-full">
+                <form method="GET" action="{{ route('properties.index') }}" 
+                      class="hero-search-form-integrated flex flex-col md:flex-row" 
+                      role="search"
+                      aria-label="Property search form">
+                    <!-- Property Type Dropdown -->
+                    <div class="hero-search-field flex-1 w-full md:w-auto">
+                        <select name="property_type" 
+                                class="hero-search-select w-full px-4 pb-4 bg-transparent border-0 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 text-gray-900 font-bold text-base transition-all"
+                                aria-label="Property type">
                             <option value="">All Types</option>
                             <option value="House" {{ request('property_type') == 'House' ? 'selected' : '' }}>House</option>
                             <option value="Apartment" {{ request('property_type') == 'Apartment' ? 'selected' : '' }}>Apartment</option>
@@ -37,10 +41,14 @@
                         </select>
                     </div>
                     
-                    <!-- Listing Type Filter -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Listing Type</label>
-                        <select name="listing_type" class="w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary">
+                    <!-- Vertical Separator -->
+                    <div class="hero-search-separator w-px bg-gray-300 my-4 hidden md:block" aria-hidden="true"></div>
+                    
+                    <!-- Listing Type Dropdown -->
+                    <div class="hero-search-field flex-1 w-full md:w-auto">
+                        <select name="listing_type" 
+                                class="hero-search-select w-full px-4 pb-4 bg-transparent border-0 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 text-gray-900 font-bold text-base transition-all"
+                                aria-label="Listing status">
                             <option value="">All Listings</option>
                             <option value="For Sale" {{ request('listing_type') == 'For Sale' ? 'selected' : '' }}>For Sale</option>
                             <option value="For Rent" {{ request('listing_type') == 'For Rent' ? 'selected' : '' }}>For Rent</option>
@@ -48,20 +56,28 @@
                         </select>
                     </div>
                     
-                    <!-- Location Filter -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
-                        <input type="text" name="location" value="{{ request('location') }}" placeholder="Enter location" class="w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary">
+                    <!-- Vertical Separator -->
+                    <div class="hero-search-separator w-px bg-gray-300 my-4 hidden md:block" aria-hidden="true"></div>
+                    
+                    <!-- Location Input -->
+                    <div class="hero-search-field flex-[2] w-full md:flex-[2]">
+                        <input type="text" 
+                               name="location" 
+                               value="{{ request('location') }}" 
+                               placeholder="Enter location" 
+                               class="hero-search-input w-full px-4 pb-4 bg-transparent border-0 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 text-gray-900 placeholder-gray-400 text-base transition-all"
+                               aria-label="Search location"
+                               autocomplete="off">
                     </div>
                     
-                    <!-- Search Button -->
-                    <div class="flex items-end">
-                        <button type="submit" class="w-full bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors font-medium">
-                            Search Properties
-                        </button>
-                    </div>
-                </div>
-            </form>
+                    <!-- Search Properties Button -->
+                    <button type="submit" 
+                            class="hero-search-button-integrated bg-accent hover:bg-accent-dark active:scale-95 text-white font-bold px-6 md:px-8 py-4 transition-all duration-200 uppercase text-sm whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                            aria-label="Search properties">
+                        Search Properties
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </section>
@@ -81,8 +97,8 @@
                     <input type="hidden" name="listing_type" value="{{ request('listing_type') }}">
                     <input type="hidden" name="location" value="{{ request('location') }}">
                     <label class="text-sm font-medium text-gray-700">Sort by:</label>
-                    <select name="sort" onchange="this.form.submit()" class="rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary">
-                        <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Newest First</option>
+                    <select name="sort" onchange="this.form.submit()" class="properties-sort-select rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary">
+                        <option value="newest" {{ request('sort') == 'newest' || !request('sort') ? 'selected' : '' }}>Newest First</option>
                         <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Oldest First</option>
                         <option value="price-high" {{ request('sort') == 'price-high' ? 'selected' : '' }}>Price: High to Low</option>
                         <option value="price-low" {{ request('sort') == 'price-low' ? 'selected' : '' }}>Price: Low to High</option>
