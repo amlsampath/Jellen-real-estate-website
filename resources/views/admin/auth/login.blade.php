@@ -12,8 +12,8 @@
                     colors: {
                         primary: '#1e40af',
                         secondary: '#64748b',
-                        accent: '#f59e0b',
-                        'accent-dark': '#d97706'
+                        accent: '#a9c638',
+                        'accent-dark': '#9ab32f'
                     }
                 }
             }

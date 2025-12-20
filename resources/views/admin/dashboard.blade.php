@@ -144,8 +144,8 @@
                 
                 <a href="{{ route('admin.blog-posts.index') }}" class="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200">
                     <div class="flex-shrink-0">
-                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-blog text-orange-600"></i>
+                        <div class="w-10 h-10 bg-[#a9c638] bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-blog text-[#a9c638]"></i>
                         </div>
                     </div>
                     <div class="ml-4">

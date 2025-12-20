@@ -20,21 +20,21 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
     --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
 
-    /* Brand Colors - Updated with golden yellow accent */
-    --color-primary: #1a1a1a;
-    --color-primary-light: #2d2d2d;
-    --color-primary-dark: #0f0f0f;
-    --color-accent: #C0392B;
+    /* Brand Colors - Updated with primary color #a9c638 */
+    --color-primary: #a9c638;
+    --color-primary-light: #a9c638;
+    --color-primary-dark: #a9c638;
+    --color-accent: #a9c638;
     /* primary accent (was #ffae00) */
-    --color-accent-light: #E74C3C;
-    --color-accent-dark: #922B21;
+    --color-accent-light: #a9c638;
+    --color-accent-dark: #a9c638;
     --color-secondary: #666666;
     --color-secondary-light: #999999;
     --color-secondary-dark: #333333;
 
     /* Yellow Accent Colors for Hero Section */
     --color-yellow-accent: #FFD700;
-    --color-yellow-accent-dark: #FFC107;
+    --color-yellow-accent-dark: #a9c638;
 
     /* Additional Search Property specific colors */
     --color-text-primary: #1a1a1a;
@@ -58,7 +58,7 @@
 
     /* Status Colors */
     --color-success: #10b981;
-    --color-warning: #f59e0b;
+    --color-warning: #a9c638;
     --color-error: #ef4444;
     --color-info: #3b82f6;
 
@@ -135,9 +135,30 @@
     @apply max-w-7xl mx-auto;
 }
 
+/* Header Background - Primary Color */
+#main-nav {
+    background-color: #a9c638 !important;
+}
+
+/* Ensure background persists on scroll */
+#main-nav.fixed {
+    background-color: #a9c638 !important;
+}
+
+/* Custom Primary Background Utility */
+.bg-primary-custom {
+    background-color: #a9c638 !important;
+}
+
 /* Footer color utility to avoid purge issues with arbitrary values */
 .footer-dark {
     background-color: #1B3C53;
+}
+
+/* Footer text color overrides to ensure white text */
+.footer-dark .search-property-heading,
+.footer-dark .search-property-text {
+    color: white !important;
 }
 
 /* Hero Section Styles */
@@ -198,12 +219,16 @@
 /* Premium Hero Section Styles */
 .hero-section-minimal {
     position: relative;
-    min-height: 120vh;
+    max-height: 80vh;
+    min-height: 80vh;
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* Hero background image is now set inline in the HTML */
@@ -216,6 +241,16 @@
     right: 0;
     bottom: 0;
     z-index: 1;
+}
+
+.hero-overlay-green {
+    background: rgba(169, 198, 56, 0.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
 }
 
 .hero-city-text-cyan {
@@ -246,6 +281,12 @@
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
     border-radius: 0.75rem;
     width: 100%;
+    transition: box-shadow 0.3s ease;
+}
+
+.hero-search-container-integrated:focus-within {
+    box-shadow: 0 10px 25px -5px rgba(169, 198, 56, 0.3), 0 8px 10px -6px rgba(169, 198, 56, 0.2);
+    border-color: #a9c638;
 }
 
 .hero-search-form-integrated {
@@ -256,6 +297,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    position: relative;
 }
 
 .hero-search-label {
@@ -273,38 +315,71 @@
     cursor: pointer;
     font-weight: 700;
     color: #1a1a1a;
+    min-height: 3rem;
+}
+
+.hero-search-select:hover {
+    background-color: rgba(169, 198, 56, 0.05);
 }
 
 .hero-search-select option {
     font-weight: normal;
+    padding: 0.5rem;
 }
 
 .hero-search-select option:checked {
     font-weight: bold;
+    background-color: #a9c638;
+    color: white;
 }
 
 .hero-search-input {
     color: #1a1a1a;
+    min-height: 3rem;
+}
+
+.hero-search-input:focus {
+    background-color: rgba(169, 198, 56, 0.05);
 }
 
 .hero-search-input::placeholder {
     color: #9ca3af;
+    transition: opacity 0.2s;
+}
+
+.hero-search-input:focus::placeholder {
+    opacity: 0.5;
 }
 
 .hero-search-separator {
     flex-shrink: 0;
+    transition: opacity 0.2s;
 }
 
 .hero-search-button-integrated {
-    background-color: var(--color-yellow-accent);
-    color: #1a1a1a;
-    transition: background-color 0.2s ease-in-out;
+    background-color: var(--color-accent);
+    color: #fff;
+    transition: all 0.2s ease-in-out;
     border: none;
     border-radius: 0;
+    min-height: 3rem;
+    cursor: pointer;
+    font-weight: 700;
 }
 
 .hero-search-button-integrated:hover {
-    background-color: var(--color-yellow-accent-dark);
+    background-color: var(--color-accent-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(169, 198, 56, 0.3);
+}
+
+.hero-search-button-integrated:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(169, 198, 56, 0.2);
+}
+
+.hero-search-button-integrated:focus {
+    outline: none;
 }
 
 /* Button rounded corners to match container */
@@ -320,16 +395,29 @@
 
     .hero-search-field {
         border-bottom: 1px solid #e5e7eb;
+        padding: 0.75rem 0;
+    }
+
+    .hero-search-field:first-child {
+        padding-top: 0;
     }
 
     .hero-search-field:last-of-type {
         border-bottom: none;
+        padding-bottom: 0;
     }
 
     .hero-search-button-integrated {
         border-radius: 0.5rem;
         margin: 1rem;
         width: calc(100% - 2rem);
+        margin-top: 0.5rem;
+    }
+    
+    .hero-search-select,
+    .hero-search-input {
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }
 
@@ -362,13 +450,13 @@
     color: var(--color-yellow-accent);
 }
 
-/* Cyan accent utility classes for phone button */
+/* Primary accent utility classes for phone button */
 .bg-cyan-accent {
-    background-color: #06b6d4;
+    background-color: #a9c638;
 }
 
 .bg-cyan-accent-dark {
-    background-color: #0891b2;
+    background-color: #9ab32f;
 }
 
 /* Responsive adjustments for hero section */
@@ -393,7 +481,9 @@
     }
 
     .hero-section-minimal {
-        min-height: auto;
+        max-height: 80vh;
+        min-height: 80vh;
+        height: 80vh;
         padding: 2rem 0;
     }
 
@@ -1048,7 +1138,7 @@
 
 /* Enhanced Blog Section Styles */
 .blog-cta-section {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 50%, #f6ad55 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 50%, #a9c638 100%);
     position: relative;
     overflow: hidden;
 }
@@ -1066,7 +1156,7 @@
 
 /* Gradient text effect */
 .gradient-text {
-    background: linear-gradient(135deg, #f6ad55, #ed8936);
+    background: linear-gradient(135deg, #b8d04a, #a9c638);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

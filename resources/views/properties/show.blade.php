@@ -107,7 +107,7 @@
                             <h3 class="text-lg font-semibold text-gray-900 mb-4">Basic Information</h3>
                             
                             <div class="flex justify-between py-2 border-b border-gray-100">
-                                <span class="text-gray-600">Property Type:</span>
+                                <!-- <span class="text-gray-600">Property Type:</span> -->
                                 <span class="font-medium">{{ ucfirst($property->property_type) }}</span>
                             </div>
                             

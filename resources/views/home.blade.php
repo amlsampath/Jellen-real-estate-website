@@ -5,9 +5,11 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="hero-section-minimal relative flex items-center justify-center overflow-hidden" style="background-image: url('{{ asset('images/hero-bg.jpeg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;height: 80vh;">
+    <section class="hero-section-minimal relative flex items-center justify-center overflow-hidden" style="background-image: url('{{ asset('images/hero-bg.jpeg') }}');">
         <!-- Dark Overlay -->
         <div class="hero-overlay-light"></div>
+        <!-- Green Overlay -->
+        <div class="hero-overlay-green"></div>
         
         <!-- Content Container - Centered -->
         <div class="relative z-10 px-4 w-full max-w-6xl mx-auto py-16 md:py-34 lg:py-32">
@@ -16,7 +18,7 @@
                 <div class="mb-6">
                     <h2 class="hero-city-text-cyan uppercase tracking-wider text-xs md:text-sm font-light text-white">
                         ARMADALE CITY
-                        <span class="block w-12 h-0.5 bg-yellow-accent mx-auto mt-2"></span>
+                        <span class="block w-12 h-0.5 bg-accent mx-auto mt-2"></span>
                     </h2>
                 </div>
                 
@@ -27,11 +29,17 @@
                 
                 <!-- Search Interface - White Rounded Box -->
                 <div class="hero-search-container-integrated bg-white overflow-hidden mb-8 w-full">
-                    <form method="GET" action="{{ route('properties.index') }}" class="hero-search-form-integrated flex flex-col md:flex-row" id="hero-search-form">
+                    <form method="GET" action="{{ route('properties.index') }}" 
+                          class="hero-search-form-integrated flex flex-col md:flex-row" 
+                          id="hero-search-form"
+                          role="search"
+                          aria-label="Property search form">
                         <!-- Property Type Dropdown -->
                         <div class="hero-search-field flex-1 w-full md:w-auto">
-                            <label class="hero-search-label block text-xs font-medium mb-1 px-4 pt-4">Property Type</label>
-                            <select name="property_type" class="hero-search-select w-full px-4 pb-4 bg-transparent border-0 focus:outline-none focus:ring-0 text-gray-900 font-bold text-base">
+                            <select name="property_type" 
+                                    id="hero-property-type"
+                                    class="hero-search-select w-full px-4 pb-4 bg-transparent border-0 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 text-gray-900 font-bold text-base transition-all"
+                                    aria-label="Property type">
                                 <option value="">All</option>
                                 <option value="House" {{ request('property_type') == 'House' || !request('property_type') ? 'selected' : '' }}>Homes</option>
                                 <option value="Apartment" {{ request('property_type') == 'Apartment' ? 'selected' : '' }}>Apartment</option>
@@ -41,12 +49,14 @@
                         </div>
                         
                         <!-- Vertical Separator -->
-                        <div class="hero-search-separator w-px bg-gray-300 my-4"></div>
+                        <div class="hero-search-separator w-px bg-gray-300 my-4 hidden md:block" aria-hidden="true"></div>
                         
                         <!-- Status Dropdown -->
                         <div class="hero-search-field flex-1 w-full md:w-auto">
-                            <label class="hero-search-label block text-xs font-medium mb-1 px-4 pt-4">Status</label>
-                            <select name="listing_type" class="hero-search-select w-full px-4 pb-4 bg-transparent border-0 focus:outline-none focus:ring-0 text-gray-900 font-bold text-base">
+                            <select name="listing_type" 
+                                    id="hero-listing-type"
+                                    class="hero-search-select w-full px-4 pb-4 bg-transparent border-0 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 text-gray-900 font-bold text-base transition-all"
+                                    aria-label="Listing status">
                                 <option value="">All Status</option>
                                 <option value="Sold" {{ request('listing_type') == 'Sold' || !request('listing_type') ? 'selected' : '' }}>Sold</option>
                                 <option value="For Sale" {{ request('listing_type') == 'For Sale' ? 'selected' : '' }}>For Sale</option>
@@ -56,19 +66,24 @@
                         </div>
                         
                         <!-- Vertical Separator -->
-                        <div class="hero-search-separator w-px bg-gray-300 my-4"></div>
+                        <div class="hero-search-separator w-px bg-gray-300 my-4 hidden md:block" aria-hidden="true"></div>
                         
                         <!-- Search Input -->
                         <div class="hero-search-field flex-[2] w-full md:flex-[2]">
-                            <label class="hero-search-label block text-xs font-medium mb-1 px-4 pt-4 invisible">Search</label>
-                            <input type="text" name="location" value="{{ request('location') }}" 
+                            <input type="text" 
+                                   name="location" 
+                                   id="hero-search-location"
+                                   value="{{ request('location') }}" 
                                    placeholder="Search for properties, suburbs, or keywords..." 
-                                   class="hero-search-input w-full px-4 pb-4 bg-transparent border-0 focus:outline-none focus:ring-0 text-gray-900 placeholder-gray-400 text-base"
-                                   onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('hero-search-form').submit(); }">
+                                   class="hero-search-input w-full px-4 pb-4 bg-transparent border-0 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 text-gray-900 placeholder-gray-400 text-base transition-all"
+                                   aria-label="Search location"
+                                   autocomplete="off">
                         </div>
                         
                         <!-- Find Properties Button -->
-                        <button type="submit" class="hero-search-button-integrated bg-yellow-accent hover:bg-yellow-accent-dark text-gray-900 font-bold px-6 md:px-8 py-4 transition-colors duration-200 uppercase text-sm whitespace-nowrap">
+                        <button type="submit" 
+                                class="hero-search-button-integrated bg-accent hover:bg-accent-dark active:scale-95 text-gray-900 font-bold px-6 md:px-8 py-4 transition-all duration-200 uppercase text-sm whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                                aria-label="Search properties">
                             FIND PROPERTIES
                         </button>
                     </form>
@@ -76,7 +91,7 @@
                 
                 <!-- Tagline - Below Search Bar -->
                 <p class="hero-description-faint text-base md:text-lg leading-relaxed mx-auto text-white">
-                    Knowledge. Skill. Experience. It's how our agents maximise the value of your property. And it's how we've sold more properties in Australasia than any other real estate group.
+                    Knowledge. Skill. Experience. It's how our agents maximise the value of your property.
                 </p>
             </div>
         </div>
@@ -121,13 +136,13 @@
     
     <div class="fixed bottom-4 right-4 z-50">
         <div class="flex items-center space-x-2">
-            <a href="tel:1300782492" class="bg-cyan-accent text-white p-3 rounded-lg shadow-lg hover:bg-cyan-accent-dark transition-colors duration-200">
+            <a href="tel:1300782492" class="bg-accent text-white p-3 rounded-lg shadow-lg hover:bg-accent-dark transition-colors duration-200">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                 </svg>
             </a>
-            <a href="tel:1300782492" class="bg-cyan-accent text-white px-5 py-3 rounded-lg shadow-lg hover:bg-cyan-accent-dark transition-colors duration-200 font-medium">
-                1300 782 492
+            <a href="tel:1300782492" class="bg-accent text-white px-5 py-3 rounded-lg shadow-lg hover:bg-accent-dark transition-colors duration-200 font-medium">
+                0482 449 449
             </a>
         </div>
     </div>

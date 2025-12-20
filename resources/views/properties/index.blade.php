@@ -27,7 +27,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <!-- Property Type Filter -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Property Type</label>
+                        <!-- <label class="block text-sm font-medium text-gray-700 mb-2">Property Type</label> -->
                         <select name="property_type" class="w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary">
                             <option value="">All Types</option>
                             <option value="House" {{ request('property_type') == 'House' ? 'selected' : '' }}>House</option>
@@ -211,7 +211,7 @@
                     Contact Us
                 </a>
                 <a href="tel:1300782492" class="bg-white text-primary border-2 border-primary px-8 py-3 rounded-lg hover:bg-primary hover:text-white transition-colors font-medium">
-                    Call 1300 782 492
+                    Call 0482 449 449
                 </a>
             </div>
         </div>

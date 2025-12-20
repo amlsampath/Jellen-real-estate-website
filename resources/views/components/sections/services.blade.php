@@ -18,13 +18,6 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Buying Service -->
             <div class="service-card bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center group">
-                <div class="flex justify-center mb-6">
-                    <div class="w-20 h-20 bg-accent-light rounded-full border border-accent flex items-center justify-center transition-colors duration-300">
-                        <svg class="w-10 h-10 text-accent-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                        </svg>
-                    </div>
-                </div>
                 <h3 class="text-2xl font-bold text-gray-900 mb-4">Buying</h3>
                 <p class="text-gray-600 leading-relaxed mb-6">
                     Expert buyer's agent services to help you find the perfect investment property. We handle everything from market research to negotiation.
@@ -60,14 +53,6 @@
 
             <!-- Selling Service -->
             <div class="service-card bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center group">
-                <div class="flex justify-center mb-6">
-                    <div class="w-20 h-20 bg-accent-light rounded-full border border-accent flex items-center justify-center transition-colors duration-300">
-                        <svg class="w-10 h-10 text-accent-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" stroke-width="2.5"></path>
-                        </svg>
-                    </div>
-                </div>
                 <h3 class="text-2xl font-bold text-gray-900 mb-4">Selling</h3>
                 <p class="text-gray-600 leading-relaxed mb-6">
                     Maximize your property's value with our comprehensive selling services. From pricing strategy to closing, we ensure the best outcome.
@@ -103,14 +88,6 @@
 
             <!-- Leasing Service -->
             <div class="service-card bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center group">
-                <div class="flex justify-center mb-6">
-                    <div class="w-20 h-20 bg-accent-light rounded-full border border-accent flex items-center justify-center transition-colors duration-300">
-                        <svg class="w-10 h-10 text-accent-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M3 14h18" stroke-width="1.5"></path>
-                        </svg>
-                    </div>
-                </div>
                 <h3 class="text-2xl font-bold text-gray-900 mb-4">Leasing</h3>
                 <p class="text-gray-600 leading-relaxed mb-6">
                     Streamlined leasing services for both landlords and tenants. We handle the entire leasing process with professionalism and efficiency.
