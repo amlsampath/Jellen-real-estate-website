@@ -14,12 +14,12 @@
         <!-- Content Container - Centered -->
         <div class="relative z-10 px-4 w-full max-w-6xl mx-auto py-16 md:py-34 lg:py-32">
             <div class="flex flex-col items-center justify-center text-center">
-                <!-- ARMADALE CITY Text - Location Label -->
-                <div class="mb-6">
-                    <h2 class="hero-city-text-cyan uppercase tracking-wider text-xs md:text-sm font-light text-white">
-                        ARMADALE CITY
-                        <span class="block w-12 h-0.5 bg-accent mx-auto mt-2"></span>
-                    </h2>
+                <!-- Logo -->
+                <div class="mb-6 flex flex-col items-center">
+                    <img src="{{ asset('images/logo-new.jpeg') }}" 
+                         alt="Govener Realty" 
+                         class="h-12 md:h-16 w-auto">
+                    <span class="block w-12 h-0.5 bg-accent mx-auto mt-2"></span>
                 </div>
                 
                 <!-- Main Headline -->

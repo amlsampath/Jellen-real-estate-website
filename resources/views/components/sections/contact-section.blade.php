@@ -167,7 +167,8 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-gray-900 mb-1">Main Office</h4>
-                                <p class="text-gray-600">123 Collins Street<br>Melbourne VIC 3000<br>Australia</p>
+                                <p class="text-gray-600">Piara Waters <br>Perth 6112
+Perth 6112<br>Australia</p>
                             </div>
                         </div>
                         
