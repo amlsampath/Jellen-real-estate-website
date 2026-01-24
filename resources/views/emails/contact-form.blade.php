@@ -114,7 +114,7 @@
 
         <div class="field-group">
             <div class="field-label">Message</div>
-            <div class="message-box">{{ $message }}</div>
+            <div class="message-box">{{ $messageContent }}</div>
         </div>
 
         <div class="footer">

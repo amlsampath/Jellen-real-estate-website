@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\ContactSubmission;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 use App\Mail\ContactFormMail;
+use App\Mail\ContactThankYouMail;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 
 class ContactController extends Controller
 {
@@ -35,8 +38,16 @@ class ContactController extends Controller
         ]);
 
         // Send email notification
+        $recipientEmail = 'amlsampath666@gmail.com';
+        Log::info('Attempting to send contact form email', [
+            'recipient' => $recipientEmail,
+            'submission_name' => $request->name,
+            'submission_email' => $request->email,
+            'property_interest' => $request->property_interest ?? 'Not specified'
+        ]);
+
         try {
-            Mail::to('jellen@govenerrealty.com.au')->send(
+            Mail::to($recipientEmail)->send(
                 new ContactFormMail(
                     $request->name,
                     $request->email,
@@ -45,9 +56,73 @@ class ContactController extends Controller
                     $request->message
                 )
             );
+            
+            Log::info('Contact form email sent successfully', [
+                'recipient' => $recipientEmail,
+                'submission_name' => $request->name,
+                'submission_email' => $request->email
+            ]);
+        } catch (TransportExceptionInterface $e) {
+            // Handle SMTP connection/timeout errors specifically
+            Log::error('SMTP transport error - failed to send contact form email', [
+                'recipient' => $recipientEmail,
+                'submission_name' => $request->name,
+                'submission_email' => $request->email,
+                'error_message' => $e->getMessage(),
+                'error_type' => 'SMTP Transport Exception',
+                'error_file' => $e->getFile(),
+                'error_line' => $e->getLine()
+            ]);
+        } catch (\Exception $e) {
+            // Log the error with full details but don't break the user experience
+            Log::error('Failed to send contact form email', [
+                'recipient' => $recipientEmail,
+                'submission_name' => $request->name,
+                'submission_email' => $request->email,
+                'error_message' => $e->getMessage(),
+                'error_file' => $e->getFile(),
+                'error_line' => $e->getLine(),
+                'error_trace' => $e->getTraceAsString()
+            ]);
+        }
+
+        // Send thank you email to customer
+        try {
+            Log::info('Attempting to send thank you email to customer', [
+                'customer_email' => $request->email,
+                'customer_name' => $request->name
+            ]);
+
+            Mail::to($request->email)->send(
+                new ContactThankYouMail(
+                    $request->name,
+                    $request->email
+                )
+            );
+
+            Log::info('Thank you email sent successfully to customer', [
+                'customer_email' => $request->email,
+                'customer_name' => $request->name
+            ]);
+        } catch (TransportExceptionInterface $e) {
+            // Handle SMTP connection/timeout errors specifically
+            Log::error('SMTP transport error - failed to send thank you email to customer', [
+                'customer_email' => $request->email,
+                'customer_name' => $request->name,
+                'error_message' => $e->getMessage(),
+                'error_type' => 'SMTP Transport Exception',
+                'error_file' => $e->getFile(),
+                'error_line' => $e->getLine()
+            ]);
         } catch (\Exception $e) {
             // Log the error but don't break the user experience
-            \Log::error('Failed to send contact form email: ' . $e->getMessage());
+            Log::error('Failed to send thank you email to customer', [
+                'customer_email' => $request->email,
+                'customer_name' => $request->name,
+                'error_message' => $e->getMessage(),
+                'error_file' => $e->getFile(),
+                'error_line' => $e->getLine()
+            ]);
         }
 
         return redirect()->back()->with('success', 'Thank you for your message! We will get back to you soon.');

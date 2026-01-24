@@ -16,18 +16,18 @@ class ContactFormMail extends Mailable
     public $email;
     public $phone;
     public $propertyInterest;
-    public $message;
+    public $messageContent;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($name, $email, $phone, $propertyInterest, $message)
+    public function __construct($name, $email, $phone, $propertyInterest, $messageContent)
     {
         $this->name = $name;
         $this->email = $email;
         $this->phone = $phone;
         $this->propertyInterest = $propertyInterest;
-        $this->message = $message;
+        $this->messageContent = $messageContent;
     }
 
     /**
@@ -35,9 +35,24 @@ class ContactFormMail extends Mailable
      */
     public function envelope(): Envelope
     {
+        // Strictly validate email address - must be a valid email format
+        $replyToEmail = filter_var($this->email, FILTER_VALIDATE_EMAIL);
+        
+        // Build the envelope with subject
+        $subject = 'New Contact Form Submission from ' . ($this->name ?: 'Unknown');
+        
+        // Only set replyTo if we have a valid email address
+        // Use just the email string (simplest approach - no name to avoid confusion)
+        if ($replyToEmail && is_string($replyToEmail)) {
+            return new Envelope(
+                subject: $subject,
+                replyTo: $replyToEmail,
+            );
+        }
+        
+        // If email is invalid, don't set replyTo
         return new Envelope(
-            subject: 'New Contact Form Submission from ' . $this->name,
-            replyTo: [$this->email => $this->name],
+            subject: $subject,
         );
     }
 

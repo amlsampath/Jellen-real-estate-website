@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'log'),
+    'default' => env('MAIL_MAILER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -43,10 +43,23 @@ return [
             'url' => env('MAIL_URL'),
             'host' => env('MAIL_HOST', '127.0.0.1'),
             'port' => env('MAIL_PORT', 2525),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'encryption' => (function() {
+                $encryption = env('MAIL_ENCRYPTION');
+                $port = (int) env('MAIL_PORT', 2525);
+                // Port 465 requires SSL encryption - auto-fix if not set
+                if ($port === 465 && (empty($encryption) || $encryption === 'null')) {
+                    return 'ssl';
+                }
+                // Port 587 typically uses TLS
+                if ($port === 587 && (empty($encryption) || $encryption === 'null')) {
+                    return 'tls';
+                }
+                // Return explicit value or default to TLS
+                return !empty($encryption) && $encryption !== 'null' ? $encryption : 'tls';
+            })(),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
-            'timeout' => null,
+            'timeout' => 30,
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
         ],
 
